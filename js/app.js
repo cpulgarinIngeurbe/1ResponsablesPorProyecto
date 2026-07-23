@@ -72,13 +72,13 @@ class DirectorioApp {
         PROYECTOS.forEach(proyecto => {
             const btn = document.createElement('button');
             btn.className = 'filter-btn';
-            btn.textContent = proyecto;
-            btn.id = `btn-proyecto-${proyecto}`;
+            btn.textContent = proyecto.nombre;
+            btn.id = `btn-proyecto-${proyecto.nombre}`;
             btn.addEventListener('click', () => {
-                if (this.filtrosProyectos.includes(proyecto)) {
-                    this.filtrosProyectos = this.filtrosProyectos.filter(p => p !== proyecto);
+                if (this.filtrosProyectos.includes(proyecto.nombre)) {
+                    this.filtrosProyectos = this.filtrosProyectos.filter(p => p !== proyecto.nombre);
                 } else {
-                    this.filtrosProyectos.push(proyecto);
+                    this.filtrosProyectos.push(proyecto.nombre);
                 }
                 this.updateFilters();
                 this.render();
@@ -244,6 +244,10 @@ class DirectorioApp {
         });
     }
 
+    getProyectoInfo(nombreProyecto) {
+        return PROYECTOS.find(p => p.nombre === nombreProyecto);
+    }
+
     updateCargoButtonText() {
         const btn = document.getElementById('cargo-dropdown-btn');
         if (!btn) return;
@@ -291,7 +295,31 @@ class DirectorioApp {
             return;
         }
 
-        grid.innerHTML = filtrados.map(r => this.renderCard(r)).join('');
+        // Agrupar por proyecto
+        const proyectosActivos = this.filtrosProyectos.length > 0
+            ? PROYECTOS.filter(p => this.filtrosProyectos.includes(p.nombre))
+            : PROYECTOS;
+
+        let html = '';
+
+        proyectosActivos.forEach(proyecto => {
+            const responsablesProyecto = filtrados.filter(r => r.proyecto === proyecto.nombre);
+
+            if (responsablesProyecto.length === 0) return;
+
+            html += `
+                <div class="proyecto-section">
+                    <div class="proyecto-logo">
+                        <img src="${proyecto.logo}" alt="${proyecto.nombre}" onerror="this.style.display='none'">
+                    </div>
+                    <div class="proyecto-cards">
+                        ${responsablesProyecto.map(r => this.renderCard(r)).join('')}
+                    </div>
+                </div>
+            `;
+        });
+
+        grid.innerHTML = html;
     }
 
     renderCard(responsable) {

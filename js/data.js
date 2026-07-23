@@ -1,5 +1,12 @@
-// Proyectos
-const PROYECTOS = ['VIALE', 'ALBURA', 'FLORA'];
+// Proyectos con logos
+const PROYECTOS = [
+    { nombre: 'VIALE', logo: 'assets/logos/VIALE.png' },
+    { nombre: 'ALBURA', logo: 'assets/logos/ALBURA.png' },
+    { nombre: 'FLORA', logo: 'assets/logos/FLORA.png' }
+];
+
+// Obtener solo nombres para compatibilidad
+const PROYECTOS_NOMBRES = PROYECTOS.map(p => p.nombre);
 
 // Cargos estándar
 const CARGOS = [

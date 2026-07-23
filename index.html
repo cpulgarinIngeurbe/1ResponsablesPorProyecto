@@ -210,10 +210,38 @@
             padding: 32px 24px;
         }
 
-        .cards-grid {
+        /* Projects Organization */
+        .proyecto-section {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .proyecto-logo {
+            flex-shrink: 0;
+            width: 140px;
+            height: 140px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .proyecto-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .proyecto-cards {
+            flex: 1;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 24px;
+        }
+
+        .cards-grid {
+            display: contents;
         }
 
         .card {
