@@ -56,7 +56,7 @@ const RESPONSABLES_INFO = {
 // Lista simple de fotos (si no especificas info arriba, se genera automáticamente)
 const FOTOS = [
     // VIALE
-    'VIALE_Director_Manuel-Perez.png',
+    'VIALE_Director_Natalia-Avila.png',
     'VIALE_Residente-1_Carlos-Ruiz.png',
 
     // ALBURA
