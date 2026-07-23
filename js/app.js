@@ -135,6 +135,7 @@ class DirectorioApp {
     }
 
     setupEventListeners() {
+        // Dropdown de cargos
         const btn = document.getElementById('cargo-dropdown-btn');
         const menu = document.getElementById('cargo-dropdown-menu');
         const dropdown = document.getElementById('cargo-dropdown');
@@ -152,6 +153,80 @@ class DirectorioApp {
                 }
             });
         }
+
+        // Botones de acciones múltiples
+        const btnCorreoTodos = document.getElementById('btn-correo-todos');
+        const btnTeamsTodos = document.getElementById('btn-teams-todos');
+
+        if (btnCorreoTodos) {
+            btnCorreoTodos.addEventListener('click', () => this.enviarCorreoATodos());
+        }
+
+        if (btnTeamsTodos) {
+            btnTeamsTodos.addEventListener('click', () => this.copiarTeamsATodos());
+        }
+    }
+
+    enviarCorreoATodos() {
+        const filtrados = this.getResponsablesFiltrados();
+        if (filtrados.length === 0) {
+            alert('No hay responsables para enviar correo');
+            return;
+        }
+
+        const correos = filtrados.map(r => r.correo).join(',');
+        const asunto = 'Directorio de Responsables';
+        const mailto = `mailto:?bcc=${encodeURIComponent(correos)}&subject=${encodeURIComponent(asunto)}`;
+        window.location.href = mailto;
+    }
+
+    copiarTeamsATodos() {
+        const filtrados = this.getResponsablesFiltrados();
+        if (filtrados.length === 0) {
+            alert('No hay responsables para copiar Teams');
+            return;
+        }
+
+        const teamsEmails = filtrados
+            .filter(r => r.teams)
+            .map(r => r.teams)
+            .join('; ');
+
+        if (teamsEmails.length === 0) {
+            alert('No hay emails de Teams para copiar');
+            return;
+        }
+
+        navigator.clipboard.writeText(teamsEmails).then(() => {
+            this.mostrarNotificacion('Emails de Teams copiados al portapapeles');
+        }).catch(() => {
+            alert('Error al copiar al portapapeles');
+        });
+    }
+
+    mostrarNotificacion(mensaje) {
+        const notif = document.createElement('div');
+        notif.style.cssText = `
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: white;
+            border-left: 4px solid #cddc39;
+            border-radius: 6px;
+            padding: 16px 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 14px;
+            color: #333;
+            z-index: 2000;
+            animation: slideInUp 250ms;
+        `;
+        notif.textContent = mensaje;
+        document.body.appendChild(notif);
+
+        setTimeout(() => {
+            notif.style.animation = 'slideInDown 250ms';
+            setTimeout(() => notif.remove(), 250);
+        }, 3000);
     }
 
     updateCargoOptions() {

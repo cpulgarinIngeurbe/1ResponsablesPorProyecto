@@ -36,6 +36,17 @@
             padding: 24px 40px;
         }
 
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .header-info {
+            flex: 1;
+        }
+
         .header-title {
             font-size: 28px;
             font-weight: 700;
@@ -49,7 +60,39 @@
             color: #b0c4d9;
             font-weight: 400;
             letter-spacing: 0.3px;
-            margin-bottom: 16px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .header-btn {
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 250ms;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .header-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .header-btn img {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
         }
 
         .filters {
@@ -346,8 +389,22 @@
 <body>
     <header>
         <div class="header-container">
-            <div class="header-title">Directorio de Responsables por Proyectos</div>
-            <div class="header-subtitle">Listado de responsables asignados por proyecto</div>
+            <div class="header-top">
+                <div class="header-info">
+                    <div class="header-title">Directorio de Responsables por Proyectos</div>
+                    <div class="header-subtitle">Listado de responsables asignados por proyecto</div>
+                </div>
+                <div class="header-actions">
+                    <a href="javascript:void(0)" id="btn-correo-todos" class="header-btn" title="Enviar correo a todos los filtrados">
+                        <img src="LogoOutlook.png" alt="Correo">
+                        <span>Correos</span>
+                    </a>
+                    <a href="javascript:void(0)" id="btn-teams-todos" class="header-btn" title="Copiar Teams de todos los filtrados">
+                        <img src="LogoTeams.png" alt="Teams">
+                        <span>Teams</span>
+                    </a>
+                </div>
+            </div>
             <div class="filters">
                 <div class="filters-left" id="filters"></div>
                 <div class="cargo-dropdown" id="cargo-dropdown">
