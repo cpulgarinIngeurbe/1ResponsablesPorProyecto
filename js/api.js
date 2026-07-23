@@ -3,9 +3,18 @@ import Utils from './utils.js';
 
 class API {
   constructor() {
-    this.baseUrl = window.location.href.includes('github.io')
-      ? 'https://cpulgarinIngeurbe.github.io/1ResponsablesPorProyecto'
-      : '';
+    this.baseUrl = this.getBaseUrl();
+  }
+
+  getBaseUrl() {
+    const { hostname, pathname } = window.location;
+
+    if (hostname.includes('github.io')) {
+      const repoName = pathname.split('/')[1] || '';
+      return `/${repoName}`;
+    }
+
+    return '';
   }
 
   async fetch(url) {
@@ -18,6 +27,8 @@ class API {
 
     try {
       const fullUrl = this.baseUrl + url;
+      console.log(`Fetching: ${fullUrl}`);
+
       const response = await fetch(fullUrl, {
         headers: {
           'Cache-Control': 'no-cache',
@@ -25,7 +36,7 @@ class API {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status} for URL: ${fullUrl}`);
       }
 
       const data = await response.json();
