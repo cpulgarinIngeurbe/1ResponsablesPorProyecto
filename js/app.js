@@ -181,7 +181,7 @@ class DirectorioApp {
         }
 
         const correos = filtrados.map(r => r.correo).join(',');
-        const mailto = `mailto:?bcc=${encodeURIComponent(correos)}`;
+        const mailto = `mailto:${encodeURIComponent(correos)}`;
         window.location.href = mailto;
     }
 
