@@ -95,30 +95,87 @@ class DirectorioApp {
     }
 
     populateCargosFilter() {
-        const filterCargos = document.getElementById('filter-cargos');
-        if (!filterCargos) return;
+        const menu = document.getElementById('cargo-dropdown-menu');
+        if (!menu) return;
+
+        // Agregar opción "Todos los cargos"
+        const todoDiv = document.createElement('div');
+        todoDiv.className = 'cargo-option selected';
+        todoDiv.textContent = 'Todos los cargos';
+        todoDiv.addEventListener('click', () => {
+            this.filtrosCargos = [];
+            this.updateCargoOptions();
+            this.render();
+            this.updateCargoButtonText();
+        });
+        menu.appendChild(todoDiv);
 
         // Obtener cargos únicos
         const cargosUnicos = [...new Set(this.responsables.map(r => r.cargo))].sort();
 
-        // Agregar opciones
+        // Crear opciones de cargos
         cargosUnicos.forEach(cargo => {
-            const option = document.createElement('option');
-            option.value = cargo;
-            option.textContent = cargo;
-            filterCargos.appendChild(option);
+            const div = document.createElement('div');
+            div.className = 'cargo-option';
+            div.textContent = cargo;
+
+            div.addEventListener('click', () => {
+                if (this.filtrosCargos.includes(cargo)) {
+                    this.filtrosCargos = this.filtrosCargos.filter(c => c !== cargo);
+                } else {
+                    this.filtrosCargos.push(cargo);
+                }
+                this.updateCargoOptions();
+                this.render();
+                this.updateCargoButtonText();
+            });
+
+            menu.appendChild(div);
         });
     }
 
     setupEventListeners() {
-        const filterCargos = document.getElementById('filter-cargos');
-        if (filterCargos) {
-            filterCargos.addEventListener('change', (e) => {
-                this.filtrosCargos = Array.from(e.target.selectedOptions)
-                    .map(opt => opt.value)
-                    .filter(v => v);
-                this.render();
+        const btn = document.getElementById('cargo-dropdown-btn');
+        const menu = document.getElementById('cargo-dropdown-menu');
+        const dropdown = document.getElementById('cargo-dropdown');
+
+        if (btn && menu) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('open');
+                btn.querySelector('.dropdown-arrow').classList.toggle('open');
             });
+
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    menu.classList.remove('open');
+                    btn.querySelector('.dropdown-arrow').classList.remove('open');
+                }
+            });
+        }
+    }
+
+    updateCargoOptions() {
+        const opciones = document.querySelectorAll('.cargo-option');
+        opciones.forEach((opt, idx) => {
+            opt.classList.remove('selected');
+            if (idx === 0 && this.filtrosCargos.length === 0) {
+                opt.classList.add('selected');
+            } else if (idx > 0 && this.filtrosCargos.includes(opt.textContent)) {
+                opt.classList.add('selected');
+            }
+        });
+    }
+
+    updateCargoButtonText() {
+        const btn = document.getElementById('cargo-dropdown-btn');
+        if (!btn) return;
+
+        if (this.filtrosCargos.length === 0) {
+            btn.innerHTML = '<span>Todos los cargos</span><span class="dropdown-arrow">▼</span>';
+        } else if (this.filtrosCargos.length === 1) {
+            btn.innerHTML = `<span>${this.filtrosCargos[0]}</span><span class="dropdown-arrow">▼</span>`;
+        } else {
+            btn.innerHTML = `<span>${this.filtrosCargos.length} cargos</span><span class="dropdown-arrow">▼</span>`;
         }
     }
 
