@@ -231,9 +231,11 @@ class DirectorioApp {
                 <div class="card-actions">
                     <a href="mailto:${responsable.correo}" class="btn btn-correo" title="Enviar correo">
                         <img src="LogoOutlook.png" alt="Outlook" class="btn-icon">
+                        <span>Correo</span>
                     </a>
                     ${responsable.teams ? `<a href="msteams://teams.microsoft.com/l/chat/0/0?users=${responsable.teams}" class="btn btn-teams" title="Abrir Teams">
                         <img src="LogoTeams.png" alt="Teams" class="btn-icon">
+                        <span>Teams</span>
                     </a>` : ''}
                 </div>
             </div>

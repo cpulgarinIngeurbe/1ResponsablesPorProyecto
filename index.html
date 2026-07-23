@@ -16,13 +16,13 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #f5f5f5;
+            background: #f0f2f5;
             color: #333;
             line-height: 1.6;
         }
 
         header {
-            background: linear-gradient(135deg, #3d5a3d 0%, #2d4a2d 100%);
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c4a6d 100%);
             padding: 0;
             position: sticky;
             top: 0;
@@ -33,22 +33,23 @@
         .header-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 32px 24px;
+            padding: 24px 40px;
         }
 
         .header-title {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             letter-spacing: -0.5px;
         }
 
         .header-subtitle {
-            font-size: 13px;
-            color: #c8d4c8;
+            font-size: 12px;
+            color: #b0c4d9;
             font-weight: 400;
             letter-spacing: 0.3px;
+            margin-bottom: 16px;
         }
 
         .filters {
@@ -76,7 +77,7 @@
 
         .cargo-dropdown-btn {
             padding: 10px 16px;
-            border: 1px solid #d0d0d0;
+            border: 1px solid #ccc;
             border-radius: 6px;
             background: white;
             color: #333;
@@ -92,8 +93,8 @@
         }
 
         .cargo-dropdown-btn:hover {
-            border-color: #7cb342;
-            box-shadow: 0 2px 8px rgba(124, 179, 66, 0.1);
+            border-color: #999;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .cargo-dropdown-menu {
@@ -146,27 +147,27 @@
         }
 
         .filter-btn {
-            padding: 10px 18px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 6px;
             background: transparent;
-            color: #e8e8e8;
+            color: #d0e0f0;
             cursor: pointer;
             font-size: 13px;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 250ms;
         }
 
         .filter-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.6);
             color: white;
         }
 
         .filter-btn.active {
-            background: #7cb342;
-            color: white;
-            border-color: #7cb342;
+            background: #c4e538;
+            color: #1e3a5f;
+            border-color: #c4e538;
         }
 
         main {
@@ -183,30 +184,30 @@
 
         .card {
             background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
+            border: 2px solid #d4e538;
+            border-radius: 16px;
             padding: 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .card:hover {
-            border-color: #7cb342;
-            box-shadow: 0 8px 24px rgba(124, 179, 66, 0.12);
-            transform: translateY(-6px);
+            border-color: #c4e538;
+            box-shadow: 0 8px 24px rgba(196, 229, 56, 0.15);
+            transform: translateY(-4px);
         }
 
         .card-photo {
-            width: 140px;
-            height: 140px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid white;
+            border: 4px solid #d4e538;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
         }
 
@@ -227,12 +228,12 @@
         .card-proyecto {
             display: inline-block;
             font-size: 12px;
-            background: #e8f5e9;
-            color: #2d5016;
+            background: #d4e538;
+            color: #1e3a5f;
             padding: 6px 14px;
             border-radius: 6px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
         }
 
         .card-actions {
@@ -249,46 +250,44 @@
             flex: 1;
             padding: 10px 12px;
             border: 1px solid #d0d0d0;
-            background: #fafafa;
+            background: white;
             border-radius: 6px;
             cursor: pointer;
             font-size: 12px;
             font-weight: 500;
-            transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 250ms;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             color: #333;
+            gap: 6px;
         }
 
         .btn:hover {
-            transform: scale(1.05);
+            border-color: #999;
+            background: #f5f5f5;
         }
 
         .btn-correo {
-            color: #0078d4;
+            color: #333;
         }
 
         .btn-correo:hover {
-            background: #0078d4;
-            border-color: #0078d4;
-            color: white;
+            border-color: #333;
         }
 
         .btn-teams {
-            color: #6264a7;
+            color: #333;
         }
 
         .btn-teams:hover {
-            background: #6264a7;
-            border-color: #6264a7;
-            color: white;
+            border-color: #333;
         }
 
         .btn-icon {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             object-fit: contain;
         }
 
