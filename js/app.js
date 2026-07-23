@@ -180,10 +180,13 @@ class DirectorioApp {
             return;
         }
 
-        const correos = filtrados.map(r => r.correo).join(',');
-        const asunto = 'Directorio de Responsables';
-        const mailto = `mailto:?bcc=${encodeURIComponent(correos)}&subject=${encodeURIComponent(asunto)}`;
-        window.location.href = mailto;
+        // Copiar correos al portapapeles
+        const correos = filtrados.map(r => r.correo).join('; ');
+        navigator.clipboard.writeText(correos).then(() => {
+            this.mostrarNotificacion('Correos copiados al portapapeles');
+        }).catch(() => {
+            alert('Error al copiar al portapapeles');
+        });
     }
 
     copiarTeamsATodos() {
