@@ -131,7 +131,7 @@ class DirectorioApp {
                     <a href="mailto:${responsable.correo}" class="btn" title="Enviar correo">✉️</a>
                     <a href="tel:${responsable.telefono}" class="btn" title="Llamar">📞</a>
                     <a href="https://wa.me/57${responsable.telefono.replace(/\D/g, '').slice(-10)}" target="_blank" class="btn" title="WhatsApp">💬</a>
-                    ${responsable.teams ? `<a href="https://teams.microsoft.com/l/chat/0/0?users=${responsable.teams}" target="_blank" class="btn" title="Teams">🔵</a>` : ''}
+                    ${responsable.teams ? `<a href="msteams://teams.microsoft.com/l/chat/0/0?users=${responsable.teams}" class="btn" title="Abrir Teams">🔵</a>` : ''}
                 </div>
             </div>
         `;
