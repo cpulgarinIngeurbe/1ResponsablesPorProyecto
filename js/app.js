@@ -32,13 +32,17 @@ class DirectorioApp {
             const nombre = nombrePartes.join('_').replace(/-/g, ' ');
             const cargo = cargoParte.replace(/-/g, ' ');
 
+            // Obtener información adicional si existe
+            const infoAdicional = RESPONSABLES_INFO[foto] || {};
+
             return {
                 foto: `assets/photos/${foto}`,
                 nombre,
                 cargo,
                 proyecto,
-                correo: this.generarCorreo(nombre, proyecto),
-                telefono: '+57 3XX XXXXXXX'
+                correo: infoAdicional.correo || this.generarCorreo(nombre, proyecto),
+                telefono: infoAdicional.telefono || '+57 3XX XXXXXXX',
+                teams: infoAdicional.teams || null
             };
         });
     }
@@ -127,6 +131,7 @@ class DirectorioApp {
                     <a href="mailto:${responsable.correo}" class="btn" title="Enviar correo">✉️</a>
                     <a href="tel:${responsable.telefono}" class="btn" title="Llamar">📞</a>
                     <a href="https://wa.me/57${responsable.telefono.replace(/\D/g, '').slice(-10)}" target="_blank" class="btn" title="WhatsApp">💬</a>
+                    ${responsable.teams ? `<a href="https://teams.microsoft.com/l/chat/0/0?users=${responsable.teams}" target="_blank" class="btn" title="Teams">🔵</a>` : ''}
                 </div>
             </div>
         `;
