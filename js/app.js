@@ -1,14 +1,29 @@
 class DirectorioApp {
     constructor() {
+        console.log('📊 Iniciando Directorio de Responsables...');
+        console.log('FOTOS cargadas:', typeof FOTOS !== 'undefined' ? FOTOS.length : 'NO DEFINIDO');
+        console.log('PROYECTOS:', typeof PROYECTOS !== 'undefined' ? PROYECTOS : 'NO DEFINIDO');
+
         this.filtroProyecto = null;
         this.responsables = [];
         this.init();
     }
 
     init() {
-        this.parseResponsables();
-        this.renderFilters();
-        this.render();
+        try {
+            this.parseResponsables();
+            this.renderFilters();
+            this.render();
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('grid').innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">❌</div>
+                    <div class="empty-state-title">Error al cargar</div>
+                    <p>${error.message}</p>
+                </div>
+            `;
+        }
     }
 
     parseResponsables() {
