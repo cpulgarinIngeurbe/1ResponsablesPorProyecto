@@ -5,6 +5,7 @@ class DirectorioApp {
         console.log('PROYECTOS:', typeof PROYECTOS !== 'undefined' ? PROYECTOS : 'NO DEFINIDO');
 
         this.filtroProyecto = null;
+        this.filtrosCargos = [];
         this.responsables = [];
         this.init();
     }
@@ -13,6 +14,8 @@ class DirectorioApp {
         try {
             this.parseResponsables();
             this.renderFilters();
+            this.populateCargosFilter();
+            this.setupEventListeners();
             this.render();
         } catch (error) {
             console.error('Error:', error);
@@ -91,11 +94,52 @@ class DirectorioApp {
         });
     }
 
-    getResponsablesFiltrados() {
-        if (!this.filtroProyecto) {
-            return this.responsables;
+    populateCargosFilter() {
+        const filterCargos = document.getElementById('filter-cargos');
+        if (!filterCargos) return;
+
+        // Obtener cargos únicos
+        const cargosUnicos = [...new Set(this.responsables.map(r => r.cargo))].sort();
+
+        // Agregar opciones
+        cargosUnicos.forEach(cargo => {
+            const option = document.createElement('option');
+            option.value = cargo;
+            option.textContent = cargo;
+            filterCargos.appendChild(option);
+        });
+    }
+
+    setupEventListeners() {
+        const filterCargos = document.getElementById('filter-cargos');
+        if (filterCargos) {
+            filterCargos.addEventListener('change', (e) => {
+                this.filtrosCargos = Array.from(e.target.selectedOptions)
+                    .map(opt => opt.value)
+                    .filter(v => v);
+                this.render();
+            });
         }
-        return this.responsables.filter(r => r.proyecto === this.filtroProyecto);
+    }
+
+    applyFilters() {
+        this.render();
+    }
+
+    getResponsablesFiltrados() {
+        let filtrados = this.responsables;
+
+        // Filtro por proyecto
+        if (this.filtroProyecto) {
+            filtrados = filtrados.filter(r => r.proyecto === this.filtroProyecto);
+        }
+
+        // Filtro por cargos (si hay seleccionados)
+        if (this.filtrosCargos.length > 0) {
+            filtrados = filtrados.filter(r => this.filtrosCargos.includes(r.cargo));
+        }
+
+        return filtrados;
     }
 
     render() {
