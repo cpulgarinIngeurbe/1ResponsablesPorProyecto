@@ -1,0 +1,49 @@
+{
+  "cargos": [
+    {
+      "id": 1,
+      "nombre": "Gerente de Obra",
+      "departamento": "Gestión"
+    },
+    {
+      "id": 2,
+      "nombre": "Ingeniero Residente",
+      "departamento": "Ejecución"
+    },
+    {
+      "id": 3,
+      "nombre": "Supervisora SST",
+      "departamento": "Seguridad"
+    },
+    {
+      "id": 4,
+      "nombre": "Jefe de Compras",
+      "departamento": "Logística"
+    },
+    {
+      "id": 5,
+      "nombre": "Coordinadora BIM",
+      "departamento": "Tecnología"
+    },
+    {
+      "id": 6,
+      "nombre": "Ingeniero Planeación",
+      "departamento": "Planeación"
+    },
+    {
+      "id": 7,
+      "nombre": "Director de Proyecto",
+      "departamento": "Dirección"
+    },
+    {
+      "id": 8,
+      "nombre": "Residente de Calidad",
+      "departamento": "Calidad"
+    },
+    {
+      "id": 9,
+      "nombre": "Asistente Administrativo",
+      "departamento": "Administración"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+/* Mobile First - Base: 1 columna */
+
+/* Tablet - 2 columnas */
+@media (min-width: 640px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header-content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .search-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Laptop - 3 columnas */
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .header-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .search-container {
+    grid-template-columns: repeat(3, 1fr) auto;
+  }
+}
+
+/* Desktop - 4 columnas */
+@media (min-width: 1280px) {
+  .cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .header-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .search-container {
+    grid-template-columns: repeat(5, 1fr) auto;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+
+  header {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .header-content {
+    flex-direction: column;
+  }
+
+  .search-container {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .filters-container {
+    gap: var(--spacing-sm);
+  }
+
+  .card {
+    padding: var(--spacing-lg);
+  }
+
+  .card-photo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .card-info {
+    gap: var(--spacing-sm);
+  }
+
+  .card-actions {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-xs);
+  }
+
+  .indicators-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+}
+
+/* Landscape orientation */
+@media (orientation: landscape) and (max-height: 600px) {
+  header {
+    padding: var(--spacing-sm);
+  }
+
+  .card {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Print styles */
+@media print {
+  header,
+  .search-container,
+  .filters-container,
+  .card-actions,
+  .btn {
+    display: none;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    page-break-inside: avoid;
+  }
+}
