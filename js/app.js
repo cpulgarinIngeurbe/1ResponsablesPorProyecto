@@ -4,7 +4,7 @@ class DirectorioApp {
         console.log('FOTOS cargadas:', typeof FOTOS !== 'undefined' ? FOTOS.length : 'NO DEFINIDO');
         console.log('PROYECTOS:', typeof PROYECTOS !== 'undefined' ? PROYECTOS : 'NO DEFINIDO');
 
-        this.filtroProyecto = null;
+        this.filtrosProyectos = [];
         this.filtrosCargos = [];
         this.responsables = [];
         this.init();
@@ -61,8 +61,9 @@ class DirectorioApp {
         const todoBtn = document.createElement('button');
         todoBtn.className = 'filter-btn active';
         todoBtn.textContent = 'Todos';
+        todoBtn.id = 'btn-proyecto-todos';
         todoBtn.addEventListener('click', () => {
-            this.filtroProyecto = null;
+            this.filtrosProyectos = [];
             this.updateFilters();
             this.render();
         });
@@ -72,8 +73,13 @@ class DirectorioApp {
             const btn = document.createElement('button');
             btn.className = 'filter-btn';
             btn.textContent = proyecto;
+            btn.id = `btn-proyecto-${proyecto}`;
             btn.addEventListener('click', () => {
-                this.filtroProyecto = proyecto;
+                if (this.filtrosProyectos.includes(proyecto)) {
+                    this.filtrosProyectos = this.filtrosProyectos.filter(p => p !== proyecto);
+                } else {
+                    this.filtrosProyectos.push(proyecto);
+                }
                 this.updateFilters();
                 this.render();
             });
@@ -85,10 +91,10 @@ class DirectorioApp {
         const btns = document.querySelectorAll('.filter-btn');
         btns.forEach(btn => {
             btn.classList.remove('active');
-            if (
-                (this.filtroProyecto === null && btn.textContent === 'Todos') ||
-                (this.filtroProyecto === btn.textContent)
-            ) {
+
+            if (btn.id === 'btn-proyecto-todos' && this.filtrosProyectos.length === 0) {
+                btn.classList.add('active');
+            } else if (this.filtrosProyectos.includes(btn.textContent)) {
                 btn.classList.add('active');
             }
         });
@@ -261,9 +267,9 @@ class DirectorioApp {
     getResponsablesFiltrados() {
         let filtrados = this.responsables;
 
-        // Filtro por proyecto
-        if (this.filtroProyecto) {
-            filtrados = filtrados.filter(r => r.proyecto === this.filtroProyecto);
+        // Filtro por proyectos (si hay seleccionados)
+        if (this.filtrosProyectos.length > 0) {
+            filtrados = filtrados.filter(r => this.filtrosProyectos.includes(r.proyecto));
         }
 
         // Filtro por cargos (si hay seleccionados)
