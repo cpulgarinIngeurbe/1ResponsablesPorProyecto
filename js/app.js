@@ -180,13 +180,9 @@ class DirectorioApp {
             return;
         }
 
-        // Copiar correos al portapapeles
-        const correos = filtrados.map(r => r.correo).join('; ');
-        navigator.clipboard.writeText(correos).then(() => {
-            this.mostrarNotificacion('Correos copiados al portapapeles');
-        }).catch(() => {
-            alert('Error al copiar al portapapeles');
-        });
+        const correos = filtrados.map(r => r.correo).join(',');
+        const mailto = `mailto:?bcc=${encodeURIComponent(correos)}`;
+        window.location.href = mailto;
     }
 
     copiarTeamsATodos() {
