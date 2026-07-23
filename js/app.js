@@ -128,10 +128,17 @@ class DirectorioApp {
                 <div class="card-cargo">${responsable.cargo}</div>
                 <div class="card-proyecto">${responsable.proyecto}</div>
                 <div class="card-actions">
-                    <a href="mailto:${responsable.correo}" class="btn" title="Enviar correo">✉️</a>
-                    <a href="tel:${responsable.telefono}" class="btn" title="Llamar">📞</a>
-                    <a href="https://wa.me/57${responsable.telefono.replace(/\D/g, '').slice(-10)}" target="_blank" class="btn" title="WhatsApp">💬</a>
-                    ${responsable.teams ? `<a href="msteams://teams.microsoft.com/l/chat/0/0?users=${responsable.teams}" class="btn" title="Abrir Teams">🔵</a>` : ''}
+                    <a href="mailto:${responsable.correo}" class="btn btn-correo" title="Enviar correo">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                            <path d="m22 7-10 5L2 7"></path>
+                        </svg>
+                    </a>
+                    ${responsable.teams ? `<a href="msteams://teams.microsoft.com/l/chat/0/0?users=${responsable.teams}" class="btn btn-teams" title="Abrir Teams">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.5 1h-8C6.1 1 5 2.1 5 3.5v17C5 21.9 6.1 23 7.5 23h8c1.4 0 2.5-1.1 2.5-2.5v-17C18 2.1 16.9 1 15.5 1zm-4 21c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm4-4H7V4h12.5v14z"/>
+                        </svg>
+                    </a>` : ''}
                 </div>
             </div>
         `;
