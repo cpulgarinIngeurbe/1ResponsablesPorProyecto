@@ -63,12 +63,12 @@ const RESPONSABLES_INFO = {
         correo: 'dtellez@construccion.com.co',
         telefono: '+57 317 3334444',
         teams: 'dtellez@construccion.com.co'
+    },
+    'FLORA_Residente-2_Christian-David-Arevalo-Hernandez.png': {
+        correo: 'carevalo@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'carevalo@construccion.com.co'
     }
-
-
-
-
-    
 };
 
 // Lista simple de fotos (si no especificas info arriba, se genera automáticamente)
@@ -84,4 +84,5 @@ const FOTOS = [
     // FLORA
     'FLORA_Director_Viviana-Marcela-Hoyos-Bonilla.png',
     'FLORA_Residente-1_Daniela-Tellez-Gaviria.png',
+    'FLORA_Residente-2_Christian-David-Arevalo-Hernandez.png',
 ];
