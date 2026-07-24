@@ -340,8 +340,8 @@ class DirectorioApp {
         }
 
         const correos = filtrados.map(r => r.correo).join(';');
-        // Abrir Outlook de escritorio
-        const outlookUrl = `mailto:${correos}`;
+        // Intentar abrir Outlook de escritorio
+        const outlookUrl = `ms-outlook://compose?to=${encodeURIComponent(correos)}`;
         window.location.href = outlookUrl;
     }
 
