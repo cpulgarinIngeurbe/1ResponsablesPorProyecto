@@ -1,8 +1,28 @@
-// Proyectos con logos
+// Subgerentes
+const SUBGERENTES = [
+    {
+        id: 1,
+        nombre: "Ejemplo Subgerente 1",
+        foto: "assets/photos/subgerentes/Subgerente1.png",
+        correo: "subgerente1@ingeurbe.com",
+        telefono: "+57 300 0000001",
+        teams: "@subgerente1"
+    },
+    {
+        id: 2,
+        nombre: "Ejemplo Subgerente 2",
+        foto: "assets/photos/subgerentes/Subgerente2.png",
+        correo: "subgerente2@ingeurbe.com",
+        telefono: "+57 300 0000002",
+        teams: "@subgerente2"
+    }
+];
+
+// Proyectos con logos y subgerente asignado
 const PROYECTOS = [
-    { nombre: 'VIALE', logo: 'assets/logos/VIALE.png' },
-    { nombre: 'ALBURA', logo: 'assets/logos/ALBURA.png' },
-    { nombre: 'FLORA', logo: 'assets/logos/FLORA.png' }
+    { nombre: 'VIALE', logo: 'assets/logos/VIALE.png', subgerente_id: 1 },
+    { nombre: 'ALBURA', logo: 'assets/logos/ALBURA.png', subgerente_id: 2 },
+    { nombre: 'FLORA', logo: 'assets/logos/FLORA.png', subgerente_id: 1 }
 ];
 
 // Obtener solo nombres para compatibilidad
