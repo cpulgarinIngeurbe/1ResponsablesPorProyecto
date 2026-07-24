@@ -340,9 +340,9 @@ class DirectorioApp {
         }
 
         const correos = filtrados.map(r => r.correo).join(';');
-        // Intentar abrir Outlook de escritorio
-        const outlookUrl = `ms-outlook://compose?to=${encodeURIComponent(correos)}`;
-        window.location.href = outlookUrl;
+        // Abrir cliente de correo predeterminado (Outlook de escritorio) con destinatarios
+        const mailtoUrl = `mailto:${correos}`;
+        window.location.href = mailtoUrl;
     }
 
     copiarTeamsATodos() {
