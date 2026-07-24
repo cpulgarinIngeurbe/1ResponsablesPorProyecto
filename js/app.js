@@ -207,13 +207,13 @@ class DirectorioApp {
 
         // Copiar emails al portapapeles
         navigator.clipboard.writeText(teamsEmails).then(() => {
-            this.mostrarNotificacion('✓ Emails copiados. Teams se abre');
-            // Abrir Teams de escritorio en nuevo mensaje
+            this.mostrarNotificacion('✓ Emails copiados. Teams se abre en nuevo mensaje');
+            // Abrir Teams de escritorio en nuevo chat
             setTimeout(() => {
                 window.location.href = 'msteams://teams.microsoft.com/l/chat/0/0';
-            }, 500);
+            }, 100);
         }).catch(() => {
-            alert('Emails para Teams:\n\n' + teamsEmails + '\n\nCópia manualmente');
+            alert('Emails para Teams:\n\n' + teamsEmails + '\n\nCópia manualmente y pega en Para');
         });
     }
 
