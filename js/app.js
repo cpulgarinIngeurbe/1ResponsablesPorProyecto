@@ -478,29 +478,25 @@ class DirectorioApp {
     renderCard(responsable) {
         return `
             <div class="card">
-                <div class="card-header">
-                    <div class="card-photo-wrapper">
-                        <img
-                            src="${responsable.foto}"
-                            alt="${responsable.nombre}"
-                            class="card-photo"
-                            onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect fill=%22%23e5e7eb%22 width=%22100%22 height=%22100%22/></svg>'"
-                        />
-                    </div>
-                    <div class="card-info">
-                        <div class="card-name">${responsable.nombre}</div>
-                        <div class="card-cargo">${responsable.cargo}</div>
-                        <div class="card-proyecto">${responsable.proyecto}</div>
-                    </div>
+                <div class="card-photo">
+                    <img
+                        src="${responsable.foto}"
+                        alt="${responsable.nombre}"
+                        class="photo-img"
+                        onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22><rect fill=%22%23e5e7eb%22 width=%22120%22 height=%22120%22/></svg>'"
+                    />
+                </div>
+                <div class="card-info">
+                    <div class="card-name">${responsable.nombre}</div>
+                    <div class="card-cargo">${responsable.cargo}</div>
+                    <div class="card-proyecto">${responsable.proyecto}</div>
                 </div>
                 <div class="card-actions">
-                    <a href="mailto:${responsable.correo}" class="btn btn-correo" title="Enviar correo">
-                        <img src="LogoOutlook.png" alt="Correo" class="btn-icon">
-                        <span>Correo</span>
+                    <a href="mailto:${responsable.correo}" class="btn-icon-only" title="Enviar correo">
+                        <img src="LogoOutlook.png" alt="Correo" class="action-icon">
                     </a>
-                    ${responsable.teams ? `<a href="msteams://teams.microsoft.com/l/chat/0/0?users=${responsable.teams}" class="btn btn-teams" title="Abrir Teams">
-                        <img src="LogoTeams.png" alt="Teams" class="btn-icon">
-                        <span>Teams</span>
+                    ${responsable.teams ? `<a href="msteams://teams.microsoft.com/l/chat/0/0?users=${responsable.teams}" class="btn-icon-only" title="Abrir Teams">
+                        <img src="LogoTeams.png" alt="Teams" class="action-icon">
                     </a>` : ''}
                 </div>
             </div>

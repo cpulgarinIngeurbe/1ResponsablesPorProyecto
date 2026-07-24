@@ -288,8 +288,8 @@
 
         .proyecto-logo {
             flex-shrink: 0;
-            width: 140px;
-            height: 140px;
+            width: 100px;
+            height: 100px;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -335,10 +335,12 @@
             background: white;
             border: 2px solid #cddc39;
             border-radius: 16px;
-            padding: 12px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 12px;
+            align-items: center;
+            text-align: center;
             transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -350,109 +352,85 @@
             transform: translateY(-4px);
         }
 
-        .card-header {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-
-        .card-photo-wrapper {
-            flex-shrink: 0;
-        }
-
         .card-photo {
-            width: 90px;
-            height: 90px;
+            flex-shrink: 0;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            object-fit: cover;
+            overflow: hidden;
             border: 3px solid #cddc39;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .card-info {
             display: flex;
             flex-direction: column;
-            gap: 2px;
-            text-align: left;
-            flex: 1;
+            gap: 4px;
+            width: 100%;
         }
 
         .card-name {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             color: #111827;
         }
 
         .card-cargo {
-            font-size: 11px;
+            font-size: 12px;
             color: #6b7280;
             font-weight: 400;
         }
 
         .card-proyecto {
             display: inline-block;
-            font-size: 10px;
+            font-size: 11px;
             background: #cddc39;
             color: #556b2f;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 4px;
             font-weight: 700;
             letter-spacing: 0.2px;
-            width: fit-content;
+            align-self: center;
         }
 
         .card-actions {
             display: flex;
-            gap: 8px;
-            justify-content: flex-start;
+            gap: 12px;
+            justify-content: center;
             width: 100%;
             padding-top: 8px;
             border-top: 1px solid #f3f4f6;
         }
 
-        .btn {
-            flex: 1;
-            padding: 10px 12px;
-            border: 1px solid #d0d0d0;
-            background: white;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 500;
-            transition: all 250ms;
-            text-decoration: none;
-            display: inline-flex;
+        .btn-icon-only {
+            display: flex;
             align-items: center;
             justify-content: center;
-            color: #333;
-            gap: 6px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #e5e7eb;
+            cursor: pointer;
+            transition: all 250ms;
+            text-decoration: none;
         }
 
-        .btn:hover {
-            border-color: #999;
-            background: #f5f5f5;
+        .btn-icon-only:hover {
+            border-color: #cddc39;
+            background: #f9fafb;
+            transform: scale(1.1);
         }
 
-        .btn-correo {
-            color: #333;
-        }
-
-        .btn-correo:hover {
-            border-color: #333;
-        }
-
-        .btn-teams {
-            color: #333;
-        }
-
-        .btn-teams:hover {
-            border-color: #333;
-        }
-
-        .btn-icon {
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
+        .action-icon {
+            width: 20px;
+            height: 20px;
             object-fit: contain;
         }
 
