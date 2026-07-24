@@ -15,10 +15,10 @@ class DirectorioApp {
     init() {
         try {
             this.parseResponsables();
-            this.renderFilters();
-            this.renderSubgerentesFilter();
-            this.populateCargosFilter();
-            this.setupEventListeners();
+            this.renderProyectosDropdown();
+            this.renderSubgerentesDropdown();
+            this.renderCargosDropdown();
+            this.setupDropdownListeners();
             this.render();
         } catch (error) {
             console.error('Error:', error);
@@ -73,6 +73,140 @@ class DirectorioApp {
 
         // Obtener cargos únicos disponibles
         return [...new Set(responsablesDisponibles.map(r => r.cargo))].sort();
+    }
+
+    renderProyectosDropdown() {
+        const menu = document.getElementById('proyectos-dropdown-menu');
+        if (!menu) return;
+        menu.innerHTML = '';
+
+        PROYECTOS.forEach(proyecto => {
+            const label = document.createElement('label');
+            label.className = 'filter-option';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `proyecto-${proyecto.nombre}`;
+            checkbox.checked = this.filtrosProyectos.includes(proyecto.nombre);
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    this.filtrosProyectos.push(proyecto.nombre);
+                } else {
+                    this.filtrosProyectos = this.filtrosProyectos.filter(p => p !== proyecto.nombre);
+                }
+                this.renderCargosDropdown();
+                this.updateDropdownButtons();
+                this.render();
+            });
+
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(proyecto.nombre));
+            menu.appendChild(label);
+        });
+    }
+
+    renderSubgerentesDropdown() {
+        const menu = document.getElementById('subgerentes-dropdown-menu');
+        if (!menu) return;
+        menu.innerHTML = '';
+
+        SUBGERENTES.forEach(subgerente => {
+            const label = document.createElement('label');
+            label.className = 'filter-option';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `subgerente-${subgerente.id}`;
+            checkbox.checked = this.filtrosSubgerentes.includes(subgerente.id);
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    this.filtrosSubgerentes.push(subgerente.id);
+                } else {
+                    this.filtrosSubgerentes = this.filtrosSubgerentes.filter(s => s !== subgerente.id);
+                }
+                this.renderCargosDropdown();
+                this.updateDropdownButtons();
+                this.render();
+            });
+
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(subgerente.nombre));
+            menu.appendChild(label);
+        });
+    }
+
+    renderCargosDropdown() {
+        const menu = document.getElementById('cargos-dropdown-menu');
+        if (!menu) return;
+        menu.innerHTML = '';
+
+        const cargosDisponibles = this.getCargosDinamicos();
+
+        cargosDisponibles.forEach(cargo => {
+            const label = document.createElement('label');
+            label.className = 'filter-option';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `cargo-${cargo}`;
+            checkbox.checked = this.filtrosCargos.includes(cargo);
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    this.filtrosCargos.push(cargo);
+                } else {
+                    this.filtrosCargos = this.filtrosCargos.filter(c => c !== cargo);
+                }
+                this.updateDropdownButtons();
+                this.render();
+            });
+
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(cargo));
+            menu.appendChild(label);
+        });
+    }
+
+    updateDropdownButtons() {
+        const proyBtn = document.getElementById('proyectos-dropdown-btn');
+        const subgBtn = document.getElementById('subgerentes-dropdown-btn');
+        const carBtn = document.getElementById('cargos-dropdown-btn');
+
+        proyBtn.innerHTML = `<span>${this.filtrosProyectos.length > 0 ? this.filtrosProyectos.length + ' Proyectos' : 'Proyectos'}</span><span class="dropdown-arrow">▼</span>`;
+        subgBtn.innerHTML = `<span>${this.filtrosSubgerentes.length > 0 ? this.filtrosSubgerentes.length + ' Subgerentes' : 'Subgerentes'}</span><span class="dropdown-arrow">▼</span>`;
+        carBtn.innerHTML = `<span>${this.filtrosCargos.length > 0 ? this.filtrosCargos.length + ' Cargos' : 'Cargos'}</span><span class="dropdown-arrow">▼</span>`;
+    }
+
+    setupDropdownListeners() {
+        const dropdowns = ['proyectos', 'subgerentes', 'cargos'];
+
+        dropdowns.forEach(type => {
+            const btn = document.getElementById(`${type}-dropdown-btn`);
+            const menu = document.getElementById(`${type}-dropdown-menu`);
+
+            if (btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('open');
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+                        menu.classList.remove('open');
+                    }
+                });
+            }
+        });
+
+        // Botones de acciones masivas
+        const btnCorreoTodos = document.getElementById('btn-correo-todos');
+        const btnTeamsTodos = document.getElementById('btn-teams-todos');
+
+        if (btnCorreoTodos) {
+            btnCorreoTodos.addEventListener('click', () => this.enviarCorreoATodos());
+        }
+
+        if (btnTeamsTodos) {
+            btnTeamsTodos.addEventListener('click', () => this.copiarTeamsATodos());
+        }
     }
 
     generarCorreo(nombre, proyecto) {
