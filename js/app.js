@@ -340,9 +340,13 @@ class DirectorioApp {
         }
 
         const correos = filtrados.map(r => r.correo).join(';');
-        // Abrir cliente de correo predeterminado (Outlook de escritorio) con destinatarios
-        const mailtoUrl = `mailto:${correos}`;
-        window.location.href = mailtoUrl;
+
+        // Copiar correos al portapapeles
+        navigator.clipboard.writeText(correos).then(() => {
+            this.mostrarNotificacion('✓ Correos copiados. Pega en Outlook en el campo Para');
+        }).catch(() => {
+            alert('Correos para pegar en Outlook:\n\n' + correos);
+        });
     }
 
     copiarTeamsATodos() {
