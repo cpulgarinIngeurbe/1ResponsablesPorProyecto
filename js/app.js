@@ -53,6 +53,17 @@ class DirectorioApp {
         });
     }
 
+    getProyectosDinamicos() {
+        // Si hay subgerentes seleccionados, mostrar solo sus proyectos
+        if (this.filtrosSubgerentes.length > 0) {
+            return PROYECTOS.filter(p =>
+                this.filtrosSubgerentes.includes(p.subgerente_id)
+            );
+        }
+        // Si no hay subgerentes seleccionados, mostrar todos los proyectos
+        return PROYECTOS;
+    }
+
     getCargosDinamicos() {
         let responsablesDisponibles = this.responsables;
 
@@ -80,7 +91,9 @@ class DirectorioApp {
         if (!menu) return;
         menu.innerHTML = '';
 
-        PROYECTOS.forEach(proyecto => {
+        const proyectosDinamicos = this.getProyectosDinamicos();
+
+        proyectosDinamicos.forEach(proyecto => {
             const label = document.createElement('label');
             label.className = 'filter-option';
 
