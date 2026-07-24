@@ -27,7 +27,8 @@ const SUBGERENTES = [
 // Proyectos con logos, subgerente y clúster asignado
 // cluster_id: null si no pertenece a ningún clúster (aparecerá sin agrupar)
 const PROYECTOS = [
-    { nombre: 'FLORA', logo: 'assets/logos/FLORA.png', subgerente_id: 1, cluster_id: 1 }
+    { nombre: 'FLORA', logo: 'assets/logos/FLORA.png', subgerente_id: 1, cluster_id: 1 },
+    { nombre: 'CORTEZA', logo: 'assets/logos/CORTEZA.png', subgerente_id: 1, cluster_id: 1 }
 ];
 
 // Obtener solo nombres para compatibilidad
