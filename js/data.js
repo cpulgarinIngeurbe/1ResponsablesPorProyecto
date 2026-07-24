@@ -54,16 +54,21 @@ const CARGOS = [
 // Puedes agregar: correo, telefono, teams, etc.
 const RESPONSABLES_INFO = {
   
-    'FLORA_Director_Maria-Gonzalez.png': {
-        correo: 'maria.gonzalez@ingeurbe.com',
-        telefono: '+57 318 5551234',
-        teams: '@maria.gonzalez'
+    'FLORA_Director_Viviana-Marcela-Hoyos-Bonilla.png': {
+        correo: 'vhoyos@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'vhoyos@construccion.com.co'
     },
-    'FLORA_Residente-1_Fernando-Lopez.png': {
-        correo: 'fernando.lopez@ingeurbe.com',
+    'FLORA_Residente-1_Daniela-Tellez-Gaviria.png': {
+        correo: 'dtellez@construccion.com.co',
         telefono: '+57 317 3334444',
-        teams: '@fernando.lopez'
+        teams: 'dtellez@construccion.com.co'
     }
+
+
+
+
+    
 };
 
 // Lista simple de fotos (si no especificas info arriba, se genera automáticamente)
