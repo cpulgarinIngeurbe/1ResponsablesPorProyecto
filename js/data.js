@@ -7,7 +7,8 @@
 // ];
 const CLUSTERS = [
     { id: 1, nombre: "Robles", ubicacion: "Zona Norte" },
-    { id: 2, nombre: "LIVING", ubicacion: "Zona LIVING" }
+    { id: 2, nombre: "LIVING", ubicacion: "Zona LIVING" },
+    { id: 3, nombre: "Occidente", ubicacion: "Zona Occidente" }
 ];
 
 // Subgerentes
@@ -19,8 +20,15 @@ const SUBGERENTES = [
         correo: "drobles@ingeurbe.com",
         telefono: "+57 300 0000001",
         teams: "drobles@ingeurbe.com"
+    },
+    {
+        id: 2,
+        nombre: "Fabio Galan Pulido",
+        foto: "assets/photos/subgerentes/Subgerente2.png",
+        correo: "fgalan@ingeurbe.com",
+        telefono: "+57 300 0000002",
+        teams: "fgalan@ingeurbe.com"
     }
-
 ];
 
 // Proyectos con logos, subgerente y clúster asignado
@@ -28,7 +36,8 @@ const SUBGERENTES = [
 const PROYECTOS = [
     { nombre: 'FLORA', logo: 'assets/logos/FLORA.png', subgerente_id: 1, cluster_id: 1 },
     { nombre: 'CORTTEZA', logo: 'assets/logos/CORTTEZA.png', subgerente_id: 1, cluster_id: 1 },
-    { nombre: '53LIVING', logo: 'assets/logos/53LIVING.png', subgerente_id: 1, cluster_id: 2 }
+    { nombre: '53LIVING', logo: 'assets/logos/53LIVING.png', subgerente_id: 1, cluster_id: 2 },
+    { nombre: 'VIALE26', logo: 'assets/logos/VIALE26.png', subgerente_id: 2, cluster_id: 3 }
 ];
 
 // Obtener solo nombres para compatibilidad
@@ -139,6 +148,51 @@ const RESPONSABLES_INFO = {
         correo: 'molarte@construccion.com.co',
         telefono: '+57 300 0000000',
         teams: 'molarte@construccion.com.co'
+    },
+    'VIALE26_Director_Natalia-Avila.png': {
+        correo: 'navila@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'navila@construccion.com.co'
+    },
+    'VIALE26_Residente-1_Rubén-Dario-Avellaneda-Mantilla.png': {
+        correo: 'ravellaneda@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'ravellaneda@construccion.com.co'
+    },
+    'VIALE26_Residente-2_Diana-Marcela-Reina-Torres.png': {
+        correo: 'dreina@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'dreina@construccion.com.co'
+    },
+    'VIALE26_Residente-3_Luis-Alejandro-Rivera-Herrera.png': {
+        correo: 'lrivera@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'lrivera@construccion.com.co'
+    },
+    'VIALE26_Administrativo-1_Erika-Fernanda-Perdomo.png': {
+        correo: 'eperdomo@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'eperdomo@construccion.com.co'
+    },
+    'VIALE26_Residente-de-Control_Jose-Leonardo-Escobar-Rico.png': {
+        correo: 'jescobar@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'jescobar@construccion.com.co'
+    },
+    'VIALE26_Residente-BIM_Jose-Del-Castillo.png': {
+        correo: 'jdelcastillo@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'jdelcastillo@construccion.com.co'
+    },
+    'VIALE26_Almacenista_Javier-Valencia.png': {
+        correo: 'jvalencia@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'jvalencia@construccion.com.co'
+    },
+    'VIALE26_Residente-S.S.T._Erika-Andrea-Pardo-Arbelaez.png': {
+        correo: 'epardo@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'epardo@construccion.com.co'
     }
 };
 
@@ -174,4 +228,15 @@ const FOTOS = [
     '53LIVING_Residente-1_Ivonne-Astrid-Cubides-Vega.png',
     '53LIVING_Residente-2_Ana-Londoño-Diaz.png',
     '53LIVING_Administrativo-1_Martha-Cecilia-Olarte-Linares.png',
+
+    // VIALE26
+    'VIALE26_Director_Natalia-Avila.png',
+    'VIALE26_Residente-1_Rubén-Dario-Avellaneda-Mantilla.png',
+    'VIALE26_Residente-2_Diana-Marcela-Reina-Torres.png',
+    'VIALE26_Residente-3_Luis-Alejandro-Rivera-Herrera.png',
+    'VIALE26_Administrativo-1_Erika-Fernanda-Perdomo.png',
+    'VIALE26_Residente-de-Control_Jose-Leonardo-Escobar-Rico.png',
+    'VIALE26_Residente-BIM_Jose-Del-Castillo.png',
+    'VIALE26_Almacenista_Javier-Valencia.png',
+    'VIALE26_Residente-S.S.T._Erika-Andrea-Pardo-Arbelaez.png',
 ];
