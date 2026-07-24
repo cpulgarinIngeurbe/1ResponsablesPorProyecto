@@ -36,6 +36,7 @@ const SUBGERENTES = [
 const PROYECTOS = [
     { nombre: 'FLORA', logo: 'assets/logos/FLORA.png', subgerente_id: 1, cluster_id: 1 },
     { nombre: 'CORTTEZA', logo: 'assets/logos/CORTTEZA.png', subgerente_id: 1, cluster_id: 1 },
+    { nombre: 'ALBURA', logo: 'assets/logos/ALBURA.png', subgerente_id: 1, cluster_id: 1 },
     { nombre: '53LIVING', logo: 'assets/logos/53LIVING.png', subgerente_id: 1, cluster_id: 2 },
     { nombre: 'VIALE26', logo: 'assets/logos/VIALE26.png', subgerente_id: 2, cluster_id: 3 }
 ];
@@ -193,6 +194,41 @@ const RESPONSABLES_INFO = {
         correo: 'epardo@construccion.com.co',
         telefono: '+57 300 0000000',
         teams: 'epardo@construccion.com.co'
+    },
+    'ALBURA_Director_Luis-Fernando-Garzón.png': {
+        correo: 'fgarzon@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'fgarzon@construccion.com.co'
+    },
+    'ALBURA_Residente-1_Miguel-Ángel-Gamboa-Bran.png': {
+        correo: 'mgamboa@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'mgamboa@construccion.com.co'
+    },
+    'ALBURA_Residente-2_Fabian-David-Avila.png': {
+        correo: 'favila@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'favila@construccion.com.co'
+    },
+    'ALBURA_Administrativo-1_Juan-David-Plazas-Galindo.png': {
+        correo: 'jplazas@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'jplazas@construccion.com.co'
+    },
+    'ALBURA_Almacenista_Cristian-Alberto-Satazar-Sandoval.png': {
+        correo: 'csatazar@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'csatazar@construccion.com.co'
+    },
+    'ALBURA_Residente-BIM_Juan-Pablo-Castaneda-Santana.png': {
+        correo: 'jcastaneda@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'jcastaneda@construccion.com.co'
+    },
+    'ALBURA_Residente-de-Control_Fredy-Yamid-Padilla-Silva.png': {
+        correo: 'fpadilla@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'fpadilla@construccion.com.co'
     }
 };
 
@@ -239,4 +275,13 @@ const FOTOS = [
     'VIALE26_Residente-BIM_Jose-Del-Castillo.png',
     'VIALE26_Almacenista_Javier-Valencia.png',
     'VIALE26_Residente-S.S.T._Erika-Andrea-Pardo-Arbelaez.png',
+
+    // ALBURA
+    'ALBURA_Director_Luis-Fernando-Garzón.png',
+    'ALBURA_Residente-1_Miguel-Ángel-Gamboa-Bran.png',
+    'ALBURA_Residente-2_Fabian-David-Avila.png',
+    'ALBURA_Administrativo-1_Juan-David-Plazas-Galindo.png',
+    'ALBURA_Almacenista_Cristian-Alberto-Satazar-Sandoval.png',
+    'ALBURA_Residente-BIM_Juan-Pablo-Castaneda-Santana.png',
+    'ALBURA_Residente-de-Control_Fredy-Yamid-Padilla-Silva.png',
 ];
