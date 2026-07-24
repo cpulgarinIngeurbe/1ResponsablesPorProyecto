@@ -495,17 +495,11 @@ class DirectorioApp {
                 </div>
                 <div class="card-actions">
                     <a href="mailto:${responsable.correo}" class="btn btn-correo" title="Enviar correo">
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="4" width="20" height="16" rx="2"/>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                        </svg>
+                        <img src="LogoOutlook.png" alt="Correo" class="btn-icon">
                         <span>Correo</span>
                     </a>
                     ${responsable.teams ? `<a href="msteams://teams.microsoft.com/l/chat/0/0?users=${responsable.teams}" class="btn btn-teams" title="Abrir Teams">
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M10 10H8v4h2v-4zm6-4h-2v8h2v-8zM9 2a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm8 0a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/>
-                            <circle cx="17" cy="12" r="3"/>
-                        </svg>
+                        <img src="LogoTeams.png" alt="Teams" class="btn-icon">
                         <span>Teams</span>
                     </a>` : ''}
                 </div>
