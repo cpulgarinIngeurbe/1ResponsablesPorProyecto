@@ -168,22 +168,31 @@
         }
 
         .filter-reset-btn {
-            padding: 8px 14px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 6px;
-            background: rgba(255, 107, 107, 0.2);
-            color: #ff6b6b;
+            padding: 10px 18px;
+            border: 2px solid #cddc39;
+            border-radius: 24px;
+            background: #cddc39;
+            color: #556b2f;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
             transition: all 250ms;
             margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .filter-reset-btn:hover {
-            background: rgba(255, 107, 107, 0.3);
-            border-color: #ff6b6b;
-            color: #ff8585;
+            background: #d4e157;
+            border-color: #d4e157;
+            box-shadow: 0 4px 12px rgba(205, 220, 57, 0.3);
+        }
+
+        .filter-reset-btn::before {
+            content: "↻";
+            font-size: 14px;
+            display: inline-block;
         }
 
         .cargo-dropdown {
