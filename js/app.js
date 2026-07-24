@@ -198,19 +198,16 @@ class DirectorioApp {
         const teamsEmails = filtrados
             .filter(r => r.teams)
             .map(r => r.teams)
-            .join('\n');
+            .join(';');
 
         if (teamsEmails.length === 0) {
             alert('No hay emails de Teams para crear chat');
             return;
         }
 
-        // Copiar emails al portapapeles
-        navigator.clipboard.writeText(teamsEmails).then(() => {
-            this.mostrarNotificacion('✓ Emails copiados. Abre Teams, presiona Ctrl+N y pega los emails');
-        }).catch(() => {
-            alert('Emails para Teams:\n\n' + teamsEmails + '\n\nCópia manualmente');
-        });
+        // Abrir Teams con compose para chat grupal
+        const teamsUrl = `msteams://teams.microsoft.com/l/compose?to=${teamsEmails}`;
+        window.location.href = teamsUrl;
     }
 
     mostrarNotificacion(mensaje) {
