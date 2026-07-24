@@ -99,6 +99,26 @@ const RESPONSABLES_INFO = {
         correo: 'ecaviedes@construccion.com.co',
         telefono: '+57 300 0000000',
         teams: 'ecaviedes@construccion.com.co'
+    },
+    'CORTEZA_Director_Alejandra-Balcero-Ramirez.png': {
+        correo: 'abalcero@ingeurbe.com',
+        telefono: '+57 300 0000000',
+        teams: 'abalcero@ingeurbe.com'
+    },
+    'CORTEZA_Almacenista_Ezequiel-Francisco-Oyola-Gonzalez.png': {
+        correo: 'eoyola@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'eoyola@construccion.com.co'
+    },
+    'CORTEZA_Residente-BIM_Julian-Andres-Varon-Polania.png': {
+        correo: 'jvaron@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'jvaron@construccion.com.co'
+    },
+    'CORTEZA_Residente-de-obra_Arnol-Andres-Pastrana-Buelvas.png': {
+        correo: 'pastrana@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'pastrana@construccion.com.co'
     }
 };
 
@@ -122,4 +142,10 @@ const FOTOS = [
     'FLORA_Residente-BIM_Julian-Acosta.png',
     'FLORA_Almacenista_Jorge-Luis-Tejeda-Ferrer.png',
     'FLORA_Residente-S.S.T._Edwin-Alexander-Caviedes-Martinez.png',
+
+    // CORTEZA
+    'CORTEZA_Director_Alejandra-Balcero-Ramirez.png',
+    'CORTEZA_Almacenista_Ezequiel-Francisco-Oyola-Gonzalez.png',
+    'CORTEZA_Residente-BIM_Julian-Andres-Varon-Polania.png',
+    'CORTEZA_Residente-de-obra_Arnol-Andres-Pastrana-Buelvas.png',
 ];
