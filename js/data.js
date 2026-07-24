@@ -8,7 +8,8 @@
 const CLUSTERS = [
     { id: 1, nombre: "Robles", ubicacion: "Zona Norte" },
     { id: 2, nombre: "LIVING", ubicacion: "Zona LIVING" },
-    { id: 3, nombre: "Occidente", ubicacion: "Zona Occidente" }
+    { id: 3, nombre: "Occidente", ubicacion: "Zona Occidente" },
+    { id: 4, nombre: "Américas", ubicacion: "Zona Américas" }
 ];
 
 // Subgerentes
@@ -28,6 +29,14 @@ const SUBGERENTES = [
         correo: "fgalan@ingeurbe.com",
         telefono: "+57 300 0000002",
         teams: "fgalan@ingeurbe.com"
+    },
+    {
+        id: 3,
+        nombre: "Ing. Rosa Esperanza Almanza Pulido",
+        foto: "assets/photos/subgerentes/Subgerente3.png",
+        correo: "ralmanza@ingeurbe.com",
+        telefono: "+57 300 0000003",
+        teams: "ralmanza@ingeurbe.com"
     }
 ];
 
@@ -38,7 +47,8 @@ const PROYECTOS = [
     { nombre: 'CORTTEZA', logo: 'assets/logos/CORTTEZA.png', subgerente_id: 1, cluster_id: 1 },
     { nombre: 'ALBURA', logo: 'assets/logos/ALBURA.png', subgerente_id: 1, cluster_id: 1 },
     { nombre: '53LIVING', logo: 'assets/logos/53LIVING.png', subgerente_id: 1, cluster_id: 2 },
-    { nombre: 'VIALE26', logo: 'assets/logos/VIALE26.png', subgerente_id: 2, cluster_id: 3 }
+    { nombre: 'VIALE26', logo: 'assets/logos/VIALE26.png', subgerente_id: 2, cluster_id: 3 },
+    { nombre: 'NATIVA', logo: 'assets/logos/NATIVA.png', subgerente_id: 3, cluster_id: 4 }
 ];
 
 // Obtener solo nombres para compatibilidad
@@ -229,6 +239,66 @@ const RESPONSABLES_INFO = {
         correo: 'fpadilla@construccion.com.co',
         telefono: '+57 300 0000000',
         teams: 'fpadilla@construccion.com.co'
+    },
+    'NATIVA_Director_Camilo-Andres-Gomez-Otero.png': {
+        correo: 'cgomez@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'cgomez@construccion.com.co'
+    },
+    'NATIVA_Residente-1_Luis-Carlos-Gomez.png': {
+        correo: 'lgomez@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'lgomez@construccion.com.co'
+    },
+    'NATIVA_Residente-2_Laura-Tatiana-Iorres-Lopez.png': {
+        correo: 'ltorres@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'ltorres@construccion.com.co'
+    },
+    'NATIVA_Residente-3_Edwin-Fabian-Casas-Segura.png': {
+        correo: 'ecasas@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'ecasas@construccion.com.co'
+    },
+    'NATIVA_Residente-4_Sebastian-Davila-Sanchez.png': {
+        correo: 'sdavila@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'sdavila@construccion.com.co'
+    },
+    'NATIVA_Administrativo-1_Ivan-Dario-Fruquer-Buitrago.png': {
+        correo: 'ifruquer@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'ifruquer@construccion.com.co'
+    },
+    'NATIVA_Residente-de-Control_David-Mauricio-Riaño-Beltran.png': {
+        correo: 'driano@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'driano@construccion.com.co'
+    },
+    'NATIVA_Almacenista_Elvina-Cardona.png': {
+        correo: 'ecardona@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'ecardona@construccion.com.co'
+    },
+    'NATIVA_Residente-BIM_William-Moreno.png': {
+        correo: 'wmoreno@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'wmoreno@construccion.com.co'
+    },
+    'NATIVA_Residente-S.S.T._Diana-Alexandra-Colorado-Chica.png': {
+        correo: 'dcolorado@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'dcolorado@construccion.com.co'
+    },
+    'NATIVA_Inspector-1_Yeimi-Alejandra-Mora-Mora.png': {
+        correo: 'ymora@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'ymora@construccion.com.co'
+    },
+    'NATIVA_Inspector-2_Sandra-Milena-Ospino-Verbel.png': {
+        correo: 'sospino@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'sospino@construccion.com.co'
     }
 };
 
@@ -284,4 +354,18 @@ const FOTOS = [
     'ALBURA_Almacenista_Cristian-Alberto-Satazar-Sandoval.png',
     'ALBURA_Residente-BIM_Juan-Pablo-Castaneda-Santana.png',
     'ALBURA_Residente-de-Control_Fredy-Yamid-Padilla-Silva.png',
+
+    // NATIVA
+    'NATIVA_Director_Camilo-Andres-Gomez-Otero.png',
+    'NATIVA_Residente-1_Luis-Carlos-Gomez.png',
+    'NATIVA_Residente-2_Laura-Tatiana-Iorres-Lopez.png',
+    'NATIVA_Residente-3_Edwin-Fabian-Casas-Segura.png',
+    'NATIVA_Residente-4_Sebastian-Davila-Sanchez.png',
+    'NATIVA_Administrativo-1_Ivan-Dario-Fruquer-Buitrago.png',
+    'NATIVA_Residente-de-Control_David-Mauricio-Riaño-Beltran.png',
+    'NATIVA_Almacenista_Elvina-Cardona.png',
+    'NATIVA_Residente-BIM_William-Moreno.png',
+    'NATIVA_Residente-S.S.T._Diana-Alexandra-Colorado-Chica.png',
+    'NATIVA_Inspector-1_Yeimi-Alejandra-Mora-Mora.png',
+    'NATIVA_Inspector-2_Sandra-Milena-Ospino-Verbel.png',
 ];
