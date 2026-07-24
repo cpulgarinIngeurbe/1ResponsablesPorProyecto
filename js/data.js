@@ -1,3 +1,12 @@
+// Clústeres (Zonas)
+// Agregar los clústeres que necesites aquí. Ejemplo:
+// const CLUSTERS = [
+//     { id: 1, nombre: "Clúster Norte", ubicacion: "Zona Residencial Norte" },
+//     { id: 2, nombre: "Clúster Centro", ubicacion: "Zona Centro" },
+//     { id: 3, nombre: "Clúster Sur", ubicacion: "Zona Residencial Sur" }
+// ];
+const CLUSTERS = [];
+
 // Subgerentes
 const SUBGERENTES = [
     {
@@ -18,11 +27,12 @@ const SUBGERENTES = [
     }
 ];
 
-// Proyectos con logos y subgerente asignado
+// Proyectos con logos, subgerente y clúster asignado
+// cluster_id: null si no pertenece a ningún clúster (aparecerá sin agrupar)
 const PROYECTOS = [
-    { nombre: 'VIALE', logo: 'assets/logos/VIALE.png', subgerente_id: 1 },
-    { nombre: 'ALBURA', logo: 'assets/logos/ALBURA.png', subgerente_id: 2 },
-    { nombre: 'FLORA', logo: 'assets/logos/FLORA.png', subgerente_id: 1 }
+    { nombre: 'VIALE', logo: 'assets/logos/VIALE.png', subgerente_id: 1, cluster_id: null },
+    { nombre: 'ALBURA', logo: 'assets/logos/ALBURA.png', subgerente_id: 2, cluster_id: null },
+    { nombre: 'FLORA', logo: 'assets/logos/FLORA.png', subgerente_id: 1, cluster_id: null }
 ];
 
 // Obtener solo nombres para compatibilidad
