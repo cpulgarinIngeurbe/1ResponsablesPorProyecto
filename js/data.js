@@ -6,9 +6,8 @@
 //     { id: 3, nombre: "Clúster Sur", ubicacion: "Zona Residencial Sur" }
 // ];
 const CLUSTERS = [
-    { id: 1, nombre: "Robles", ubicacion: "Zona Norte" }
-
-    
+    { id: 1, nombre: "Robles", ubicacion: "Zona Norte" },
+    { id: 2, nombre: "LIVING", ubicacion: "Zona LIVING" }
 ];
 
 // Subgerentes
@@ -28,7 +27,8 @@ const SUBGERENTES = [
 // cluster_id: null si no pertenece a ningún clúster (aparecerá sin agrupar)
 const PROYECTOS = [
     { nombre: 'FLORA', logo: 'assets/logos/FLORA.png', subgerente_id: 1, cluster_id: 1 },
-    { nombre: 'CORTTEZA', logo: 'assets/logos/CORTTEZA.png', subgerente_id: 1, cluster_id: 1 }
+    { nombre: 'CORTTEZA', logo: 'assets/logos/CORTTEZA.png', subgerente_id: 1, cluster_id: 1 },
+    { nombre: '53LIVING', logo: 'assets/logos/53LIVING.png', subgerente_id: 1, cluster_id: 2 }
 ];
 
 // Obtener solo nombres para compatibilidad
@@ -119,6 +119,26 @@ const RESPONSABLES_INFO = {
         correo: 'pastrana@construccion.com.co',
         telefono: '+57 300 0000000',
         teams: 'pastrana@construccion.com.co'
+    },
+    '53LIVING_Director_Alejandra-Balcero-Ramirez.png': {
+        correo: 'abalcero@ingeurbe.com',
+        telefono: '+57 300 0000000',
+        teams: 'abalcero@ingeurbe.com'
+    },
+    '53LIVING_Residente-1_Ivonne-Astrid-Cubides-Vega.png': {
+        correo: 'icubides@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'icubides@construccion.com.co'
+    },
+    '53LIVING_Residente-2_Ana-Londoño-Diaz.png': {
+        correo: 'alondono@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'alondono@construccion.com.co'
+    },
+    '53LIVING_Administrativo-1_Martha-Cecilia-Olarte-Linares.png': {
+        correo: 'molarte@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'molarte@construccion.com.co'
     }
 };
 
@@ -148,4 +168,10 @@ const FOTOS = [
     'CORTTEZA_Almacenista_Ezequiel-Francisco-Oyola-Gonzalez.png',
     'CORTTEZA_Residente-BIM_Julian-Andres-Varon-Polania.png',
     'CORTTEZA_Residente-de-obra_Arnol-Andres-Pastrana-Buelvas.png',
+
+    // 53LIVING
+    '53LIVING_Director_Alejandra-Balcero-Ramirez.png',
+    '53LIVING_Residente-1_Ivonne-Astrid-Cubides-Vega.png',
+    '53LIVING_Residente-2_Ana-Londoño-Diaz.png',
+    '53LIVING_Administrativo-1_Martha-Cecilia-Olarte-Linares.png',
 ];
