@@ -68,6 +68,36 @@ const RESPONSABLES_INFO = {
         correo: 'carevalo@construccion.com.co',
         telefono: '+57 300 0000000',
         teams: 'carevalo@construccion.com.co'
+    },
+    'FLORA_Residente-3_Andres-Felipe-Rubio-Collazos.png': {
+        correo: 'frubio@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'frubio@construccion.com.co'
+    },
+    'FLORA_Administrativo-1_Laura-Ximena-Castro.png': {
+        correo: 'lcastro@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'lcastro@construccion.com.co'
+    },
+    'FLORA_Residente-de-Control_César-Augusto-Triviño-Oviedo.png': {
+        correo: 'ctrivino@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'ctrivino@construccion.com.co'
+    },
+    'FLORA_Residente-BIM_Julian-Acosta.png': {
+        correo: 'jacosta@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'jacosta@construccion.com.co'
+    },
+    'FLORA_Almacenista_Jorge-Luis-Tejeda-Ferrer.png': {
+        correo: 'jtejeda@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'jtejeda@construccion.com.co'
+    },
+    'FLORA_Residente-S.S.T._Edwin-Alexander-Caviedes-Martinez.png': {
+        correo: 'ecaviedes@construccion.com.co',
+        telefono: '+57 300 0000000',
+        teams: 'ecaviedes@construccion.com.co'
     }
 };
 
@@ -85,4 +115,10 @@ const FOTOS = [
     'FLORA_Director_Viviana-Marcela-Hoyos-Bonilla.png',
     'FLORA_Residente-1_Daniela-Tellez-Gaviria.png',
     'FLORA_Residente-2_Christian-David-Arevalo-Hernandez.png',
+    'FLORA_Residente-3_Andres-Felipe-Rubio-Collazos.png',
+    'FLORA_Administrativo-1_Laura-Ximena-Castro.png',
+    'FLORA_Residente-de-Control_César-Augusto-Triviño-Oviedo.png',
+    'FLORA_Residente-BIM_Julian-Acosta.png',
+    'FLORA_Almacenista_Jorge-Luis-Tejeda-Ferrer.png',
+    'FLORA_Residente-S.S.T._Edwin-Alexander-Caviedes-Martinez.png',
 ];
