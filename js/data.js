@@ -82,6 +82,6 @@ const FOTOS = [
     'ALBURA_Residente-1_Roberto-Santos.png',
 
     // FLORA
-    'FLORA_Director_Maria-Gonzalez.png',
-    'FLORA_Residente-1_Fernando-Lopez.png',
+    'FLORA_Director_Viviana-Marcela-Hoyos-Bonilla.png',
+    'FLORA_Residente-1_Daniela-Tellez-Gaviria.png',
 ];
