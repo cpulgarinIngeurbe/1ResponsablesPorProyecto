@@ -196,6 +196,12 @@ class DirectorioApp {
             }
         });
 
+        // Botón restablecer filtros
+        const btnReset = document.getElementById('btn-reset-filtros');
+        if (btnReset) {
+            btnReset.addEventListener('click', () => this.resetFiltros());
+        }
+
         // Botones de acciones masivas
         const btnCorreoTodos = document.getElementById('btn-correo-todos');
         const btnTeamsTodos = document.getElementById('btn-teams-todos');
@@ -207,6 +213,17 @@ class DirectorioApp {
         if (btnTeamsTodos) {
             btnTeamsTodos.addEventListener('click', () => this.copiarTeamsATodos());
         }
+    }
+
+    resetFiltros() {
+        this.filtrosProyectos = [];
+        this.filtrosCargos = [];
+        this.filtrosSubgerentes = [];
+        this.renderProyectosDropdown();
+        this.renderSubgerentesDropdown();
+        this.renderCargosDropdown();
+        this.updateDropdownButtons();
+        this.render();
     }
 
     generarCorreo(nombre, proyecto) {

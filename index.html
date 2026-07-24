@@ -167,6 +167,25 @@
             height: 14px;
         }
 
+        .filter-reset-btn {
+            padding: 8px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 6px;
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 250ms;
+            margin-left: auto;
+        }
+
+        .filter-reset-btn:hover {
+            background: rgba(255, 107, 107, 0.3);
+            border-color: #ff6b6b;
+            color: #ff8585;
+        }
+
         .cargo-dropdown {
             position: relative;
             width: 220px;
@@ -568,18 +587,18 @@
             </div>
             <div class="filters">
                 <div class="filter-dropdown-group">
-                    <button class="filter-dropdown-btn" id="proyectos-dropdown-btn">
-                        <span>Proyectos</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="filter-dropdown-menu" id="proyectos-dropdown-menu"></div>
-                </div>
-                <div class="filter-dropdown-group">
                     <button class="filter-dropdown-btn" id="subgerentes-dropdown-btn">
                         <span>Subgerentes</span>
                         <span class="dropdown-arrow">▼</span>
                     </button>
                     <div class="filter-dropdown-menu" id="subgerentes-dropdown-menu"></div>
+                </div>
+                <div class="filter-dropdown-group">
+                    <button class="filter-dropdown-btn" id="proyectos-dropdown-btn">
+                        <span>Proyectos</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="filter-dropdown-menu" id="proyectos-dropdown-menu"></div>
                 </div>
                 <div class="filter-dropdown-group">
                     <button class="filter-dropdown-btn" id="cargos-dropdown-btn">
@@ -588,6 +607,9 @@
                     </button>
                     <div class="filter-dropdown-menu" id="cargos-dropdown-menu"></div>
                 </div>
+                <button class="filter-reset-btn" id="btn-reset-filtros">
+                    ✕ Restablecer
+                </button>
             </div>
         </div>
     </header>
