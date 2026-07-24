@@ -23,7 +23,7 @@ const SUBGERENTES = [
     },
     {
         id: 2,
-        nombre: "Fabio Galan Pulido",
+        nombre: " Arq. Fabio Galan Pulido",
         foto: "assets/photos/subgerentes/Subgerente2.png",
         correo: "fgalan@ingeurbe.com",
         telefono: "+57 300 0000002",
