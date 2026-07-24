@@ -206,7 +206,7 @@ class DirectorioApp {
         }
 
         // Abrir Teams con chat grupal
-        const teamsUrl = `msteams://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(teamsEmails)}`;
+        const teamsUrl = `msteams://teams.microsoft.com/l/chat/0/0?users=${teamsEmails}`;
         window.location.href = teamsUrl;
     }
 
