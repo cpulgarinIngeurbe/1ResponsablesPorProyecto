@@ -53,6 +53,28 @@ class DirectorioApp {
         });
     }
 
+    getCargosDinamicos() {
+        let responsablesDisponibles = this.responsables;
+
+        // Filtrar por proyectos seleccionados
+        if (this.filtrosProyectos.length > 0) {
+            responsablesDisponibles = responsablesDisponibles.filter(r =>
+                this.filtrosProyectos.includes(r.proyecto)
+            );
+        }
+
+        // Filtrar por subgerentes seleccionados
+        if (this.filtrosSubgerentes.length > 0) {
+            responsablesDisponibles = responsablesDisponibles.filter(r => {
+                const proyecto = PROYECTOS.find(p => p.nombre === r.proyecto);
+                return proyecto && this.filtrosSubgerentes.includes(proyecto.subgerente_id);
+            });
+        }
+
+        // Obtener cargos únicos disponibles
+        return [...new Set(responsablesDisponibles.map(r => r.cargo))].sort();
+    }
+
     generarCorreo(nombre, proyecto) {
         const nombreLimpio = nombre.toLowerCase().replace(/\s+/g, '.');
         return `${nombreLimpio}@ingeurbe.com`;
