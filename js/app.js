@@ -183,9 +183,10 @@ class DirectorioApp {
             return;
         }
 
-        const correos = filtrados.map(r => r.correo).join(',');
-        const mailto = `mailto:${encodeURIComponent(correos)}`;
-        window.location.href = mailto;
+        const correos = filtrados.map(r => r.correo).join(';');
+        // Abrir Outlook de escritorio
+        const outlookUrl = `mailto:${correos}`;
+        window.location.href = outlookUrl;
     }
 
     copiarTeamsATodos() {
