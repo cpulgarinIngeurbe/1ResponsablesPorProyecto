@@ -107,6 +107,8 @@ class DirectorioApp {
                 } else {
                     this.filtrosProyectos = this.filtrosProyectos.filter(p => p !== proyecto.nombre);
                 }
+                // Limpiar cargos seleccionados ya que pueden no ser válidos en los nuevos proyectos
+                this.filtrosCargos = [];
                 this.renderCargosDropdown();
                 this.updateDropdownButtons();
                 this.render();
@@ -137,6 +139,11 @@ class DirectorioApp {
                 } else {
                     this.filtrosSubgerentes = this.filtrosSubgerentes.filter(s => s !== subgerente.id);
                 }
+                // Limpiar filtros dependientes
+                this.filtrosProyectos = [];
+                this.filtrosCargos = [];
+                // Re-renderizar dropdowns dinámicos
+                this.renderProyectosDropdown();
                 this.renderCargosDropdown();
                 this.updateDropdownButtons();
                 this.render();
