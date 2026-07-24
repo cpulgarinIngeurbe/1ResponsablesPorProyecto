@@ -6,6 +6,7 @@ class DirectorioApp {
 
         this.filtrosProyectos = [];
         this.filtrosCargos = [];
+        this.filtrosSubgerentes = [];
         this.responsables = [];
         this.init();
     }
@@ -14,6 +15,7 @@ class DirectorioApp {
         try {
             this.parseResponsables();
             this.renderFilters();
+            this.renderSubgerentesFilter();
             this.populateCargosFilter();
             this.setupEventListeners();
             this.render();
@@ -261,6 +263,55 @@ class DirectorioApp {
         }
     }
 
+    renderSubgerentesFilter() {
+        const container = document.getElementById('subgerentes-filter');
+        if (!container) return;
+
+        const todoBtn = document.createElement('button');
+        todoBtn.className = 'filter-btn active';
+        todoBtn.textContent = 'Todos';
+        todoBtn.id = 'btn-subgerente-todos';
+        todoBtn.addEventListener('click', () => {
+            this.filtrosSubgerentes = [];
+            this.updateSubgerentesFilters();
+            this.render();
+        });
+        container.appendChild(todoBtn);
+
+        SUBGERENTES.forEach(subgerente => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.textContent = subgerente.nombre;
+            btn.id = `btn-subgerente-${subgerente.id}`;
+            btn.addEventListener('click', () => {
+                if (this.filtrosSubgerentes.includes(subgerente.id)) {
+                    this.filtrosSubgerentes = this.filtrosSubgerentes.filter(s => s !== subgerente.id);
+                } else {
+                    this.filtrosSubgerentes.push(subgerente.id);
+                }
+                this.updateSubgerentesFilters();
+                this.render();
+            });
+            container.appendChild(btn);
+        });
+    }
+
+    updateSubgerentesFilters() {
+        const btns = document.querySelectorAll('#subgerentes-filter .filter-btn');
+        btns.forEach(btn => {
+            btn.classList.remove('active');
+
+            if (btn.id === 'btn-subgerente-todos' && this.filtrosSubgerentes.length === 0) {
+                btn.classList.add('active');
+            } else {
+                const subgerenteId = parseInt(btn.id.replace('btn-subgerente-', ''));
+                if (this.filtrosSubgerentes.includes(subgerenteId)) {
+                    btn.classList.add('active');
+                }
+            }
+        });
+    }
+
     applyFilters() {
         this.render();
     }
@@ -276,6 +327,14 @@ class DirectorioApp {
         // Filtro por cargos (si hay seleccionados)
         if (this.filtrosCargos.length > 0) {
             filtrados = filtrados.filter(r => this.filtrosCargos.includes(r.cargo));
+        }
+
+        // Filtro por subgerentes (si hay seleccionados)
+        if (this.filtrosSubgerentes.length > 0) {
+            filtrados = filtrados.filter(r => {
+                const proyecto = PROYECTOS.find(p => p.nombre === r.proyecto);
+                return proyecto && this.filtrosSubgerentes.includes(proyecto.subgerente_id);
+            });
         }
 
         return filtrados;
@@ -296,9 +355,16 @@ class DirectorioApp {
         }
 
         // Agrupar por proyecto
-        const proyectosActivos = this.filtrosProyectos.length > 0
+        let proyectosActivos = this.filtrosProyectos.length > 0
             ? PROYECTOS.filter(p => this.filtrosProyectos.includes(p.nombre))
             : PROYECTOS;
+
+        // Filtrar por subgerentes si hay seleccionados
+        if (this.filtrosSubgerentes.length > 0) {
+            proyectosActivos = proyectosActivos.filter(p =>
+                this.filtrosSubgerentes.includes(p.subgerente_id)
+            );
+        }
 
         let html = '';
 
@@ -307,10 +373,20 @@ class DirectorioApp {
 
             if (responsablesProyecto.length === 0) return;
 
+            const subgerente = SUBGERENTES.find(s => s.id === proyecto.subgerente_id);
+
             html += `
                 <div class="proyecto-section">
-                    <div class="proyecto-logo">
-                        <img src="${proyecto.logo}" alt="${proyecto.nombre}" onerror="this.style.display='none'">
+                    <div class="proyecto-header">
+                        <div class="proyecto-logo">
+                            <img src="${proyecto.logo}" alt="${proyecto.nombre}" onerror="this.style.display='none'">
+                        </div>
+                        ${subgerente ? `
+                        <div class="subgerente-info">
+                            <div class="subgerente-nombre">${subgerente.nombre}</div>
+                            <div class="subgerente-cargo">Subgerente de Construcción</div>
+                        </div>
+                        ` : ''}
                     </div>
                     <div class="proyecto-cards">
                         ${responsablesProyecto.map(r => this.renderCard(r)).join('')}
