@@ -207,10 +207,10 @@ class DirectorioApp {
 
         // Copiar emails al portapapeles
         navigator.clipboard.writeText(teamsEmails).then(() => {
-            this.mostrarNotificacion('✓ Emails copiados. Teams se abre en nuevo mensaje');
-            // Abrir Teams en modo nuevo mensaje (Ctrl+N)
+            this.mostrarNotificacion('✓ Emails copiados. Teams se abre');
+            // Abrir Teams en modo nuevo mensaje (compose)
             setTimeout(() => {
-                window.location.href = 'msteams://teams.microsoft.com/';
+                window.location.href = 'msteams://teams.microsoft.com/l/compose';
             }, 500);
         }).catch(() => {
             alert('Emails para Teams:\n\n' + teamsEmails + '\n\nCópia manualmente');
