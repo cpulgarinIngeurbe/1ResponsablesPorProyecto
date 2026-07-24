@@ -7,7 +7,7 @@
 // ];
 const CLUSTERS = [
     { id: 1, nombre: "Robles", ubicacion: "Zona Norte" },
-    { id: 2, nombre: "LIVING", ubicacion: "Zona LIVING" },
+    { id: 2, nombre: "Living", ubicacion: "Zona Living" },
     { id: 3, nombre: "Occidente", ubicacion: "Zona Occidente" },
     { id: 4, nombre: "Américas", ubicacion: "Zona Américas" }
 ];
