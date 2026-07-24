@@ -198,7 +198,7 @@ class DirectorioApp {
         const teamsEmails = filtrados
             .filter(r => r.teams)
             .map(r => r.teams)
-            .join(';');
+            .join(',');
 
         if (teamsEmails.length === 0) {
             alert('No hay emails de Teams para crear chat');
@@ -206,7 +206,7 @@ class DirectorioApp {
         }
 
         // Abrir Teams con compose para chat grupal
-        const teamsUrl = `msteams://teams.microsoft.com/l/compose?to=${teamsEmails}`;
+        const teamsUrl = `msteams://teams.microsoft.com/l/compose?users=${encodeURIComponent(teamsEmails)}`;
         window.location.href = teamsUrl;
     }
 
