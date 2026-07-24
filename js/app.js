@@ -197,16 +197,16 @@ class DirectorioApp {
 
         const teamsEmails = filtrados
             .filter(r => r.teams)
-            .map(r => r.teams)
-            .join(';');
+            .map(r => r.teams);
 
         if (teamsEmails.length === 0) {
             alert('No hay emails de Teams para crear chat');
             return;
         }
 
-        // Abrir Teams con chat grupal
-        const teamsUrl = `msteams://teams.microsoft.com/l/chat/0/0?users=${teamsEmails}`;
+        // Crear parámetros separados para cada usuario
+        const userParams = teamsEmails.map(email => `users=${email}`).join('&');
+        const teamsUrl = `msteams://teams.microsoft.com/l/chat/0/0?${userParams}`;
         window.location.href = teamsUrl;
     }
 
