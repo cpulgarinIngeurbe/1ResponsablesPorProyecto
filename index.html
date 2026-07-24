@@ -210,6 +210,70 @@
             padding: 32px 24px;
         }
 
+        /* Clusters Organization */
+        .cluster-section {
+            margin-bottom: 32px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .cluster-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #f3f4f6 0%, #f9fafb 100%);
+            border-bottom: 1px solid #e5e7eb;
+            cursor: pointer;
+            transition: all 250ms;
+            user-select: none;
+        }
+
+        .cluster-header:hover {
+            background: linear-gradient(135deg, #ececf1 0%, #f3f4f6 100%);
+        }
+
+        .cluster-toggle {
+            font-size: 12px;
+            color: #6b7280;
+            transition: transform 250ms;
+            display: inline-block;
+            width: 20px;
+            text-align: center;
+        }
+
+        .cluster-nombre {
+            font-size: 15px;
+            font-weight: 600;
+            color: #111827;
+            flex: 1;
+        }
+
+        .cluster-ubicacion {
+            font-size: 12px;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        .cluster-content {
+            padding: 24px;
+            animation: expandCluster 250ms ease-out;
+        }
+
+        @keyframes expandCluster {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 10000px;
+            }
+        }
+
         /* Projects Organization */
         .proyecto-section {
             margin-bottom: 40px;

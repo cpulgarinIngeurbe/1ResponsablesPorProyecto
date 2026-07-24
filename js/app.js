@@ -7,6 +7,7 @@ class DirectorioApp {
         this.filtrosProyectos = [];
         this.filtrosCargos = [];
         this.filtrosSubgerentes = [];
+        this.clustersAbiertos = new Set(CLUSTERS.map(c => c.id));
         this.responsables = [];
         this.init();
     }
@@ -354,7 +355,7 @@ class DirectorioApp {
             return;
         }
 
-        // Agrupar por proyecto
+        // Filtrar proyectos activos
         let proyectosActivos = this.filtrosProyectos.length > 0
             ? PROYECTOS.filter(p => this.filtrosProyectos.includes(p.nombre))
             : PROYECTOS;
@@ -368,11 +369,71 @@ class DirectorioApp {
 
         let html = '';
 
+        // Agrupar por clúster
+        const clusteresConProyectos = new Map();
+        const proyectosSinCluster = [];
+
         proyectosActivos.forEach(proyecto => {
             const responsablesProyecto = filtrados.filter(r => r.proyecto === proyecto.nombre);
-
             if (responsablesProyecto.length === 0) return;
 
+            if (proyecto.cluster_id && CLUSTERS.find(c => c.id === proyecto.cluster_id)) {
+                if (!clusteresConProyectos.has(proyecto.cluster_id)) {
+                    clusteresConProyectos.set(proyecto.cluster_id, []);
+                }
+                clusteresConProyectos.get(proyecto.cluster_id).push(proyecto);
+            } else {
+                proyectosSinCluster.push(proyecto);
+            }
+        });
+
+        // Renderizar clústeres
+        CLUSTERS.forEach(cluster => {
+            if (!clusteresConProyectos.has(cluster.id)) return;
+
+            const estaAbierto = this.clustersAbiertos.has(cluster.id);
+            const proyectos = clusteresConProyectos.get(cluster.id);
+
+            html += `
+                <div class="cluster-section">
+                    <div class="cluster-header" data-cluster-id="${cluster.id}">
+                        <span class="cluster-toggle">${estaAbierto ? '▼' : '▶'}</span>
+                        <span class="cluster-nombre">${cluster.nombre}</span>
+                        ${cluster.ubicacion ? `<span class="cluster-ubicacion">${cluster.ubicacion}</span>` : ''}
+                    </div>
+                    ${estaAbierto ? `
+                    <div class="cluster-content">
+                        ${proyectos.map(proyecto => {
+                            const responsablesProyecto = filtrados.filter(r => r.proyecto === proyecto.nombre);
+                            const subgerente = SUBGERENTES.find(s => s.id === proyecto.subgerente_id);
+                            return `
+                                <div class="proyecto-section">
+                                    <div class="proyecto-header">
+                                        <div class="proyecto-logo">
+                                            <img src="${proyecto.logo}" alt="${proyecto.nombre}" onerror="this.style.display='none'">
+                                        </div>
+                                        ${subgerente ? `
+                                        <div class="subgerente-info">
+                                            <div class="subgerente-nombre">${subgerente.nombre}</div>
+                                            <div class="subgerente-cargo">Subgerente de Construcción</div>
+                                        </div>
+                                        ` : ''}
+                                    </div>
+                                    <div class="proyecto-cards">
+                                        ${responsablesProyecto.map(r => this.renderCard(r)).join('')}
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+        });
+
+        // Renderizar proyectos sin clúster
+        proyectosSinCluster.forEach(proyecto => {
+            const responsablesProyecto = filtrados.filter(r => r.proyecto === proyecto.nombre);
             const subgerente = SUBGERENTES.find(s => s.id === proyecto.subgerente_id);
 
             html += `
@@ -396,6 +457,22 @@ class DirectorioApp {
         });
 
         grid.innerHTML = html;
+        this.setupClusterListeners();
+    }
+
+    setupClusterListeners() {
+        const headers = document.querySelectorAll('.cluster-header');
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const clusterId = parseInt(header.getAttribute('data-cluster-id'));
+                if (this.clustersAbiertos.has(clusterId)) {
+                    this.clustersAbiertos.delete(clusterId);
+                } else {
+                    this.clustersAbiertos.add(clusterId);
+                }
+                this.render();
+            });
+        });
     }
 
     renderCard(responsable) {
