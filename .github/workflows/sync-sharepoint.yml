@@ -1,0 +1,40 @@
+name: Sync to SharePoint
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'js/data.js'
+      - '.github/workflows/sync-sharepoint.yml'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    name: Sincronizar datos a SharePoint
+
+    steps:
+      - name: 📥 Descargar código
+        uses: actions/checkout@v4
+
+      - name: 📦 Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: 🔄 Ejecutar sincronización
+        env:
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          SHAREPOINT_SITE_ID: ${{ secrets.SHAREPOINT_SITE_ID }}
+          SHAREPOINT_LIST_ID: ${{ secrets.SHAREPOINT_LIST_ID }}
+        run: node sync-sharepoint.js
+
+      - name: ✅ Sincronización completada
+        if: success()
+        run: echo "✨ Los datos se han sincronizado exitosamente a SharePoint"
+
+      - name: ❌ Error en sincronización
+        if: failure()
+        run: echo "⚠️ Error en la sincronización. Verifica los logs arriba."
