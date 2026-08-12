@@ -68,9 +68,9 @@ async function graphRequest(method, endpoint, body = null) {
 
     // Procesar endpoint para construir Site ID correctamente
     let finalEndpoint = endpoint;
-    if (endpoint.includes('/sites/') && !endpoint.includes('.sharepoint.com')) {
-        // Si el endpoint tiene /sites/ pero sin el dominio, agregar el dominio
-        finalEndpoint = endpoint.replace('/sites/', '/sites/ingeurbe.sharepoint.com:/sites/');
+    if (endpoint.includes('/sites/') && !endpoint.includes('ingeurbe.sharepoint.com')) {
+        // Reemplazar /sites/AutomatizacionObras con el formato completo
+        finalEndpoint = endpoint.replace(/\/sites\/([^/]+)/, '/sites/ingeurbe.sharepoint.com:/sites/$1');
     }
 
     return new Promise((resolve, reject) => {
