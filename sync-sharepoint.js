@@ -209,15 +209,26 @@ async function getExistingItems() {
 /**
  * Crea o actualiza items en SharePoint
  */
-async function getItemsEndpoint() {
-    // Construir endpoint correctamente
-    // Si SITE_ID no contiene punto, es solo el nombre del sitio
-    let siteId = SITE_ID;
-    if (!siteId.includes('.sharepoint.com') && !siteId.includes('-')) {
-        // Es solo el nombre del sitio, construir la ruta completa
-        siteId = `ingeurbe.sharepoint.com:/sites/${SITE_ID}`;
+let cachedSiteGuid = null;
+
+async function getSiteGuid() {
+    if (cachedSiteGuid) return cachedSiteGuid;
+
+    // Obtener el GUID del sitio usando el nombre
+    const sitePath = `ingeurbe.sharepoint.com:/sites/${SITE_ID}`;
+    const response = await graphRequest('GET', `/v1.0/sites/${sitePath}?$select=id`);
+
+    if (response.id) {
+        cachedSiteGuid = response.id;
+        return cachedSiteGuid;
     }
-    return `/v1.0/sites/${siteId}/lists/${LIST_ID}/items?$select=id,fields`;
+    throw new Error(`No se pudo obtener el ID del sitio: ${SITE_ID}`);
+}
+
+async function getItemsEndpoint() {
+    // Obtener el GUID real del sitio
+    const siteGuid = await getSiteGuid();
+    return `/v1.0/sites/${siteGuid}/lists/${LIST_ID}/items?$select=id,fields`;
 }
 
 async function syncItems(newItems) {
@@ -238,13 +249,11 @@ async function syncItems(newItems) {
     let created = 0;
     let updated = 0;
 
+    // Obtener el GUID del sitio una vez
+    const siteGuid = await getSiteGuid();
+
     for (const item of newItems) {
-        // Construir endpoint con SITE_ID correcto
-        let siteId = SITE_ID;
-        if (!siteId.includes('.sharepoint.com') && !siteId.includes('-')) {
-            siteId = `ingeurbe.sharepoint.com:/sites/${SITE_ID}`;
-        }
-        const endpoint = `/v1.0/sites/${siteId}/lists/${LIST_ID}/items`;
+        const endpoint = `/v1.0/sites/${siteGuid}/lists/${LIST_ID}/items`;
         const body = {
             fields: {
                 Proyecto: item.Proyecto,
