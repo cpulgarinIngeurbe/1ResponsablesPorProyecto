@@ -19,7 +19,7 @@ const SUBGERENTES = [
         nombre: "Ing. Diego Alejandro Robles Fonseca",
         foto: "assets/photos/subgerentes/Subgerente1.png",
         correo: "drobles@ingeurbe.com",
-        telefono: "+57 300 0000001",
+        telefono: "+57 350 5555555",
         teams: "drobles@ingeurbe.com"
     },
     {
