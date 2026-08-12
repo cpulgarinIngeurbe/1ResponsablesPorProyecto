@@ -66,10 +66,17 @@ async function graphRequest(method, endpoint, body = null) {
         accessToken = await getAccessToken();
     }
 
+    // Procesar endpoint para construir Site ID correctamente
+    let finalEndpoint = endpoint;
+    if (endpoint.includes('/sites/') && !endpoint.includes('.sharepoint.com')) {
+        // Si el endpoint tiene /sites/ pero sin el dominio, agregar el dominio
+        finalEndpoint = endpoint.replace('/sites/', '/sites/ingeurbe.sharepoint.com:/sites/');
+    }
+
     return new Promise((resolve, reject) => {
         const options = {
             hostname: 'graph.microsoft.com',
-            path: endpoint,
+            path: finalEndpoint,
             method: method,
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -194,7 +201,7 @@ function buildResponsablesData(data) {
  * Obtiene items existentes en SharePoint
  */
 async function getExistingItems() {
-    const endpoint = `/v1.0/sites/${SITE_ID}/lists/${LIST_ID}/items?$select=id,fields`;
+    const endpoint = await getItemsEndpoint();
     const response = await graphRequest('GET', endpoint);
     return response.value || [];
 }
@@ -202,6 +209,17 @@ async function getExistingItems() {
 /**
  * Crea o actualiza items en SharePoint
  */
+async function getItemsEndpoint() {
+    // Construir endpoint correctamente
+    // Si SITE_ID no contiene punto, es solo el nombre del sitio
+    let siteId = SITE_ID;
+    if (!siteId.includes('.sharepoint.com') && !siteId.includes('-')) {
+        // Es solo el nombre del sitio, construir la ruta completa
+        siteId = `ingeurbe.sharepoint.com:/sites/${SITE_ID}`;
+    }
+    return `/v1.0/sites/${siteId}/lists/${LIST_ID}/items?$select=id,fields`;
+}
+
 async function syncItems(newItems) {
     console.log(`📊 Sincronizando ${newItems.length} responsables a SharePoint...`);
 
@@ -221,7 +239,12 @@ async function syncItems(newItems) {
     let updated = 0;
 
     for (const item of newItems) {
-        const endpoint = `/v1.0/sites/${SITE_ID}/lists/${LIST_ID}/items`;
+        // Construir endpoint con SITE_ID correcto
+        let siteId = SITE_ID;
+        if (!siteId.includes('.sharepoint.com') && !siteId.includes('-')) {
+            siteId = `ingeurbe.sharepoint.com:/sites/${SITE_ID}`;
+        }
+        const endpoint = `/v1.0/sites/${siteId}/lists/${LIST_ID}/items`;
         const body = {
             fields: {
                 Proyecto: item.Proyecto,
