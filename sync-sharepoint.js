@@ -262,7 +262,7 @@ async function syncItems(newItems) {
                 Cargo: item.Cargo,
                 Nombre: item.Nombre,
                 Correo: item.Correo,
-                Teléfono: item.Teléfono,
+                Telefono: item.Teléfono,
                 Teams: item.Teams,
                 Foto: item.Foto
             }
