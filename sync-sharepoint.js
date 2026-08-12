@@ -188,7 +188,7 @@ function buildResponsablesData(data) {
             Cargo: cargo,
             Nombre: nombre,
             Correo: contactInfo.correo || '',
-            Telefono: contactInfo.telefono || '',
+            Tel_x00e9_fono: contactInfo.telefono || '',
             Teams: contactInfo.teams || '',
             Foto: `assets/photos/${foto}`
         });
@@ -262,7 +262,7 @@ async function syncItems(newItems) {
                 Cargo: item.Cargo,
                 Nombre: item.Nombre,
                 Correo: item.Correo,
-                Telefono: item.Telefono,
+                Tel_x00e9_fono: item.Tel_x00e9_fono,
                 Teams: item.Teams,
                 Foto: item.Foto
             }
